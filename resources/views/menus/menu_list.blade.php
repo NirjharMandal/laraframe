@@ -9,7 +9,7 @@
                     <div class="ibox-title">
                         <h5>Nestable custom theme list</h5>
                         <button class="btn btn-info btn-xs pull-right" id="save_menu_order">UPDATE MENU ORDER <i
-                                class="fa fa-save"></i></button>
+                                    class="fa fa-save"></i></button>
                     </div>
                     <div class="ibox-content">
                         <div class="form-group has-feedback">
@@ -231,7 +231,7 @@
                 var url = '<?php echo URL::to('menuDelete');?>';
                 var data = {'id': id};
                 swalConfirm("Your will not be able to recover this imaginary file!").then(function (s) {
-                    if (s.value){
+                    if (s.value) {
                         $.ajax({
                             type: 'POST',
                             cache: false,
@@ -239,7 +239,7 @@
                             url: url,
                             data: data,
                             success: function (data) {
-                                swalRedirect('', "Your imaginary file has been deleted.",  "success");
+                                swalRedirect('', "Your imaginary file has been deleted.", "success");
                             }
                         });
                     }
@@ -247,34 +247,34 @@
 
 
                 /*swal({
-                        title: "Are you sure?",
-                        text: "Your will not be able to recover this imaginary file!",
-                        type: "warning",
-                        showCancelButton: true,
-                       // confirmButtonColor: "#DD6B55",
-                        confirmButtonText: "Yes, delete it!",
-                        cancelButtonText: "No, cancel plx!",
-                        closeOnConfirm: false,
-                        closeOnCancel: false
-                    },
-                function (isConfirm) {
-                    if (isConfirm) {
-                        swal("Deleted!", "Your imaginary file has been deleted.", "success");
-                        $.ajax({
-                            type: 'POST',
-                            cache: false,
-                            dataType: "json",
-                            url: url,
-                            data: data,
-                            success: function (data) {
-                                location.reload();
-                            }
-                        });
-                    } else {
-                        swal("Cancelled", "Your imaginary file is safe :)", "error");
-                        location.reload();
-                    }
-                });*/
+                 title: "Are you sure?",
+                 text: "Your will not be able to recover this imaginary file!",
+                 type: "warning",
+                 showCancelButton: true,
+                 // confirmButtonColor: "#DD6B55",
+                 confirmButtonText: "Yes, delete it!",
+                 cancelButtonText: "No, cancel plx!",
+                 closeOnConfirm: false,
+                 closeOnCancel: false
+                 },
+                 function (isConfirm) {
+                 if (isConfirm) {
+                 swal("Deleted!", "Your imaginary file has been deleted.", "success");
+                 $.ajax({
+                 type: 'POST',
+                 cache: false,
+                 dataType: "json",
+                 url: url,
+                 data: data,
+                 success: function (data) {
+                 location.reload();
+                 }
+                 });
+                 } else {
+                 swal("Cancelled", "Your imaginary file is safe :)", "error");
+                 location.reload();
+                 }
+                 });*/
             })
         });
     </script>

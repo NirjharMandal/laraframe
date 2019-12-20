@@ -47,8 +47,9 @@
             <li class="dropdown">
                 <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
                     @if(Session::has('USER_NAME'))
+
                         <div class="feed-element">
-                            @if(file_exists(asset('public'.session('USER_IMAGE'))))
+                            @if(file_exists(public_path().session('USER_IMAGE')))
                                 <img alt="image" class="rounded-circle float-left" style="margin-right: 5px;" src="{{asset('public'.session('USER_IMAGE'))}}"/>
                             @else
                                 <img alt="image" class="rounded-circle float-left" style="margin-right: 5px;" src="{{asset('public/img/default-user.jpg')}}"/>

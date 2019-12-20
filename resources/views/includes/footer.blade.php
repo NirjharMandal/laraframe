@@ -21,7 +21,7 @@ if(in_array(1,$levels)){
         <button class="btn btn-danger btn-sm  manual-btn"  type="user"><i class="fa fa-info"></i></button>
     </div>
     <div class="float-left">
-        <strong>Copyright</strong> Apsis Solutions Limited &copy; 2018
+        <strong>Copyright</strong> LARAFRAME &copy; 2019
     </div>
     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
         @csrf

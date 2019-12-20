@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>APSIS ENGINE</title>
+    <title>Laraframe</title>
     <link rel="shortcut icon" type="image/png" href="{{asset('public/img/logo.png')}}"/>
     <link href="{{asset('public/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('public/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
@@ -17,8 +17,8 @@
         <h1 class="brand-logo">
             <img alt="image" class="img-responsive" style="max-width: 80px" src="{{asset('public/img/logo.png')}}"/>
         </h1>
-        <h2 class="logo-name"><strong>APSIS</strong> ENGINE</h2>
-        <span class="subtitle">GROW WITH GREEN</span>
+        <h2 class="logo-name"><strong>LARA</strong> FRAME</h2>
+        <span class="subtitle">Dynamic Backend</span>
 
         <form class="m-t" role="form" method="POST" action="{{ route('login') }}" id="loginFrm">
             {{ csrf_field() }}

@@ -21,7 +21,7 @@ class apsisengine extends Command
     public function handle(){
         $moduleName = $this->argument('module');
 
-        if ($this->confirm('Is ' . $moduleName . ' correct, do you wish to continue? [y|N]')) {
+        if ($this->confirm('Is ' . $moduleName . ' correct, do you wish to continue? [y|n]')) {
             $controllerDir = 'app/Http/Controllers/';
             $modelDir = 'app/Models/';
             $viewDir = 'resources/views/';
@@ -176,7 +176,7 @@ class apsisengine extends Command
             DB::table('sys_master_grid')->where('sys_master_grid_name', '=', $moduleName)->delete();
             DB::table('sys_master_grid')->insert($master_grid);
             echo $this->info("Congratulations!..") . "\n";
-            echo $this->info('Your ' . ucfirst($this->argument('module')) . ' module  developed. Browse ' . URL::to('HOSTNAME/grid/' . $this->argument('module')) . "\n");
+            echo $this->info('Your ' . ucfirst($this->argument('module')) . ' module has been developed. Browse ' . URL::to('HOSTNAME/grid/' . $this->argument('module')) . "\n");
 
         } else {
             $this->info("Thanks try again!");

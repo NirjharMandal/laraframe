@@ -18,26 +18,18 @@ Route::match(['get', 'post'], 'user-list', 'User\UserController@List')->name('us
 Route::get('user-entry/{id?}', 'User\UserController@entryForm')->name('user-entry');
 Route::match(['get', 'post'], 'store-user-info', 'User\UserController@storeUser')->name('store-user-info');
 
-
+/*================================ MENU MANAGER ========================================*/
+Route::get('menu_list', 'MenuManagement@menu_list')->name('menu_list');
+Route::get('menulist', 'MenuManagement@menuList')->name('menu_list');
+Route::post('menu_entry', 'MenuManagement@menu_entry')->name('menu_entry');
+Route::post('getMenuRaw', 'MenuManagement@getMenuRaw')->name('getMenuRaw');
+Route::post('saveMenuOrder', 'MenuManagement@saveMenuOrder')->name('saveMenuOrder');
+Route::post('menuDelete', 'MenuManagement@menuDelete')->name('menuDelete');
+Route::get('get_menu_for_level', 'MenuManagement@get_menu_for_level')->name('get_menu_for_level');
 
 /*================================ MENU USER MANUAL ========================================*/
 Route::post('get-existing-manual-info', 'MenuUserManual@getExistingManualInfo')->name('get-existing-manual-info');
 Route::post('update-manual-info', 'MenuUserManual@updateManualInfo')->name('update-manual-info');
-
-
-
-
-/*=============================== Customer Create ========================*/
-Route::get('customer/{id?}', 'Customer\CustomerController@createNewCustomer')->name('new-customer');
-Route::post('store-customer', 'Customer\CustomerController@storeCustomer')->name('store-customer');
-Route::post('delete-customers', 'Customer\CustomerController@deleteCustomer')->name('delete-customers');
-Route::get('check-email-availablity/{email?}', 'Customer\CustomerController@checkEmailValidity')->name('check-validity');
-Route::post('chk-email-availablity', 'Customer\CustomerController@chkEmailValidity')->name('check-e-validity');
-Route::get('check-contact-availability', 'Customer\CustomerController@checkContactValidity')->name('check-cont-validity');
-
-Route::get('add-more-customer-details', function () {
-    return View::make('Customer.contact_person_details', array('exData' => array()));
-});
 
 /*===============================User Profile========================*/
 Route::get('profile', 'User\UserController@getUserProfiles')->name('getUserProfile');

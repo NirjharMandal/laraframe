@@ -167,8 +167,7 @@ class LoginController extends Controller {
     }
     private function getUserInfo(){
         $user_info_query = DB::table('sys_users');
-        $user_info_query->select('sys_users.*','designations.designations_name');
-        $user_info_query->leftJoin('designations','designations.designations_id','=','sys_users.designations_id');
+        $user_info_query->select('sys_users.*');
         $user_info_query->where('id', Auth::user()->id);
         return $user_info_query->first();
     }
@@ -238,13 +237,6 @@ class LoginController extends Controller {
             'MENUS' => $menus,
             'DEFAULT_MODULE_ID' => Auth::user()->default_module_id,
             'SELECTED_MODULE' => Auth::user()->default_module_id,
-            'LINE_MANAGER_ID' => Auth::user()->line_manager_id,
-            'DESIGNATION_ID' => Auth::user()->designations_id,
-            'DESIGNATION_NAME' => $user_info->designations_name,
-            'DEPARTMENT_ID' => Auth::user()->departments_id,
-            'BRANCH_ID' => Auth::user()->branchs_id,
-            'UNIT_ID' => Auth::user()->hr_emp_units_id,
-            'SECTION_ID' => Auth::user()->hr_emp_sections_id,
             'USER_IMAGE' => Auth::user()->user_image,
             'PASSWORD_NOTIFY'=>$password_info['password_notify'],
             'PASSWORD_EXPIRY'=>$password_info['password_expiry'],
