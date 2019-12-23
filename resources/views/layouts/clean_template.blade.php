@@ -11,5 +11,5 @@
     <body class="srcil-bg">
         @yield('content')
     </body>
-    <script src="{{asset('public/js/apsisScript.js')}}"></script>
+    <script src="{{asset('public/js/LaraframeScript.js')}}"></script>
 </html>

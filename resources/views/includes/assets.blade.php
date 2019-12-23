@@ -6,7 +6,7 @@
 <link href="{{asset('public/css/plugins/steps/jquery.steps.css')}}" rel="stylesheet">
 <link href="{{asset('public/css/animate.css')}}" rel="stylesheet">
 <link href="{{asset('public/css/style.css')}}" rel="stylesheet">
-<link href="{{asset('public/css/Apsisstyle.css')}}" rel="stylesheet newest">
+<link href="{{asset('public/css/Laraframe.css')}}" rel="stylesheet newest">
 <link href="{{asset('public/css/plugins/ladda/ladda-themeless.min.css')}}" rel="stylesheet">
 <link href="{{asset('public/css/plugins/daterangepicker/daterangepicker.css')}}" rel="stylesheet"/>
 {{--<link href="{{asset('public/js/plugins/jquery-ui/jquery-ui.min.css')}}" rel="stylesheet"/>--}}

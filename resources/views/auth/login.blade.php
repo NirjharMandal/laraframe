@@ -9,7 +9,7 @@
     <link href="{{asset('public/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
     <link href="{{asset('public/css/animate.css')}}" rel="stylesheet">
     <link href="{{asset('public/css/style.css')}}" rel="stylesheet">
-    <link href="{{asset('public/css/Apsisstyle.css')}}" rel="stylesheet newest">
+    <link href="{{asset('public/css/Laraframe.css')}}" rel="stylesheet newest">
 </head>
 <body class="apsis-bg">
 <div class="loginscreen">
