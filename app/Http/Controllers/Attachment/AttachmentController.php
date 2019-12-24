@@ -73,7 +73,7 @@ class AttachmentController extends Controller
             echo 'failed';
         }
     }
-    
+
   public function deleteAttachmentsAjax(Request $request){
     $data['result'] = true;
     $path = DB::table('attachments')

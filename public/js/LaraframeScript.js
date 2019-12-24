@@ -78,6 +78,7 @@ function makeAjaxText(url, load) {
         swalError();
     });
 }
+
 function makeAjaxPostText(data, url, load) {
     return $.ajax({
         url: url,
@@ -85,6 +86,8 @@ function makeAjaxPostText(data, url, load) {
         headers: { 'X-CSRF-Token' : $('meta[name=csrf-token]').attr('content') },
         data: data,
         cache: false,
+        processData: false,
+        contentType: false,
         beforeSend: function(){
             if(typeof(load) != "undefined" && load !== null){
                 load.ladda('start');

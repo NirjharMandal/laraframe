@@ -55,7 +55,6 @@
         Ladda.bind(this);
         var load = $(this).ladda();
         $('#'+form_id).validator().on('submit', function (e) {
-            console.log(form_id);
             if (!e.isDefaultPrevented()) {
                 e.preventDefault();
                 var formdata = $('#'+form_id).serialize();

@@ -33,7 +33,6 @@
             "app/Helpers/delegationHelper.php",
             "app/Helpers/srcilHelper.php",
             "app/Helpers/commonHelper.php",
-            "app/Helpers/helperLoader.php",
             "app/Helpers/accountsHelper.php"
         ],
         "classmap": [

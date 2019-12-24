@@ -50,6 +50,10 @@ return [
             'driver' => 'local',
             'root' => storage_path('audit'),
         ],
+        'attachment' => [
+            'driver' => 'local',
+            'root' => storage_path('attachment'),
+        ],
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
