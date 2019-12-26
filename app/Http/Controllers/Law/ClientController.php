@@ -19,7 +19,7 @@ class ClientController extends Controller {
         $this->middleware('menu_permission');
     }
 
-    public function ClientEntry(){
+    public function clientEntry(){
         return view('Law.client_entry');
     }
 
@@ -29,7 +29,7 @@ class ClientController extends Controller {
         //return response()->json($respons_arr);
     }
     public function savePassportInfo(Request $request){
-        //dd($request->all());
+        dbg($request->all());
         if($request->hasFile('passport_attachment_path')){
             //dd($request->passport_attachment_path);
             $storage = Storage::disk('attachment');

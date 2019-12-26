@@ -109,6 +109,11 @@
                                         <div class="help-block with-errors has-feedback"></div>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <button class="btn btn-info citizen_submit" data-style="zoom-in">SAVE ENTRY</button>
+                                    </div>
+                                </div>
                             </div>
                             {{--------------------------}}
                             <h3 class="acc-heading mt-3" type="" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo"><i class="fa fa-hand-o-right"></i> Passport</h3>
@@ -187,6 +192,11 @@
                                         <div class="help-block with-errors has-feedback"></div>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <button class="btn btn-info commercial_submit" data-style="zoom-in">SAVE ENTRY</button>
+                                    </div>
+                                </div>
                             </div>
                             {{--------------------------}}
                             <h3 class="acc-heading mt-3" type="" data-toggle="collapse" data-target="#collapse4" aria-expanded="true" aria-controls="collapse4"><i class="fa fa-hand-o-right"></i> Legal representatives</h3>
@@ -207,6 +217,11 @@
                                         <div class="help-block with-errors has-feedback"></div>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <button class="btn btn-info legal_submit" data-style="zoom-in">SAVE ENTRY</button>
+                                    </div>
+                                </div>
                             </div>
                             {{--------------------------}}
                             <h3 class="acc-heading mt-3" type="" data-toggle="collapse" data-target="#collapse5" aria-expanded="true" aria-controls="collapse5"><i class="fa fa-hand-o-right"></i> Letter of attorney</h3>
@@ -222,6 +237,11 @@
                                         <div class="help-block with-errors has-feedback"></div>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <button class="btn btn-info letter_submit" data-style="zoom-in">SAVE ENTRY</button>
+                                    </div>
+                                </div>
                             </div>
                             {{--------------------------}}
                             <h3 class="acc-heading mt-3" type="" data-toggle="collapse" data-target="#collapse6" aria-expanded="true" aria-controls="collapse6"><i class="fa fa-hand-o-right"></i> Transfers</h3>
@@ -231,6 +251,11 @@
                                         <label class="form-label">Transfers</label>
                                         <input type="" name="transfers_info" value="" id="" class="form-control">
                                         <div class="help-block with-errors has-feedback"></div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <button class="btn btn-info transfer_submit" data-style="zoom-in">SAVE ENTRY</button>
                                     </div>
                                 </div>
                             </div>

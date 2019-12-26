@@ -11,7 +11,7 @@
  Target Server Version : 50719
  File Encoding         : 65001
 
- Date: 24/12/2019 20:06:41
+ Date: 26/12/2019 20:08:08
 */
 
 SET NAMES utf8mb4;
@@ -48,7 +48,15 @@ CREATE TABLE `law_app_users`  (
   `updated_at` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0),
   `status` enum('Active','Inactive') CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'Active',
   PRIMARY KEY (`law_app_users_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of law_app_users
+-- ----------------------------
+INSERT INTO `law_app_users` VALUES (1, 'nirjhar', 'Individual', NULL, NULL, 'nirjhar@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-26 18:31:28', 'Active');
+INSERT INTO `law_app_users` VALUES (2, 'masum', 'Individual', NULL, NULL, 'masum@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-26 18:31:45', 'Active');
+INSERT INTO `law_app_users` VALUES (3, 'jony', 'Individual', NULL, NULL, 'jony@gmial.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-26 18:32:00', 'Active');
+INSERT INTO `law_app_users` VALUES (4, 'Zim', 'Individual', NULL, NULL, 'zim@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-26 18:32:13', 'Active');
 
 -- ----------------------------
 -- Table structure for law_app_users_legal_representative
@@ -104,6 +112,76 @@ CREATE TABLE `law_banks`  (
 -- ----------------------------
 INSERT INTO `law_banks` VALUES (2, 'Janata Bank', 'Half Govt. Bank', 1, '2019-12-23 00:00:00', NULL, '2019-12-23 17:24:34', 'Active');
 INSERT INTO `law_banks` VALUES (3, 'Brac Bank Limited', 'Non Govt. Bank', 1, '2019-12-23 00:00:00', NULL, '2019-12-23 17:25:01', 'Active');
+
+-- ----------------------------
+-- Table structure for law_contract
+-- ----------------------------
+DROP TABLE IF EXISTS `law_contract`;
+CREATE TABLE `law_contract`  (
+  `law_contract_id` int(10) NOT NULL AUTO_INCREMENT,
+  `seller_id` int(10) NOT NULL,
+  `buyer_id` int(10) NULL DEFAULT NULL,
+  `reservation_agreement_date` date NULL DEFAULT NULL,
+  `reservation_agreement_attachment_path` varchar(150) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `deal_buying_value` decimal(15, 2) NULL DEFAULT NULL,
+  `deal_initial_payment` decimal(15, 2) NULL DEFAULT NULL,
+  `deal_conc_limit_date` date NULL DEFAULT NULL,
+  `deal_notes` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+  `promise_contact_attachment_path` varchar(150) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `annexed_document_attachment_path` varchar(150) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `deed_date` date NULL DEFAULT NULL,
+  `law_notaries_id` int(10) NULL DEFAULT NULL,
+  `deed_payment_method` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `law_banks_id` int(10) NULL DEFAULT NULL,
+  `bank_mutual_value` varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `bank_stamp_tax` decimal(10, 3) NULL DEFAULT NULL COMMENT 'calculated as 6% of mutual value',
+  `bank_agency` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `bank_responsible_name` varchar(150) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `bank_responsible_contact` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `created_by` int(10) NULL DEFAULT NULL,
+  `created_at` datetime(0) NULL DEFAULT NULL,
+  `updated_by` int(10) NULL DEFAULT NULL,
+  `updated_at` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0),
+  `status` enum('Active','Inactive') CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'Active',
+  PRIMARY KEY (`law_contract_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Table structure for law_contract_initial_payment
+-- ----------------------------
+DROP TABLE IF EXISTS `law_contract_initial_payment`;
+CREATE TABLE `law_contract_initial_payment`  (
+  `law_contract_initial_payment_id` int(10) NOT NULL AUTO_INCREMENT,
+  `law_contract_id` int(10) NULL DEFAULT NULL,
+  `law_contract_initial_payment_method` varchar(150) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `description` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+  `created_by` int(10) NULL DEFAULT NULL,
+  `created_at` datetime(0) NULL DEFAULT NULL,
+  `updated_by` int(10) NULL DEFAULT NULL,
+  `updated_at` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0),
+  `status` enum('Active','Inactive') CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'Active',
+  PRIMARY KEY (`law_contract_initial_payment_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Table structure for law_contract_property
+-- ----------------------------
+DROP TABLE IF EXISTS `law_contract_property`;
+CREATE TABLE `law_contract_property`  (
+  `law_contract_property_id` int(10) NOT NULL AUTO_INCREMENT,
+  `law_contract_id` int(10) NOT NULL,
+  `price` decimal(15, 2) NULL DEFAULT NULL,
+  `water_attachment_path` varchar(150) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `electricity_attachment_path` varchar(150) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `gas_attachment_path` varchar(150) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `tv_internet_attachment_path` varchar(150) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `created_by` int(10) NULL DEFAULT NULL,
+  `created_at` datetime(0) NULL DEFAULT NULL,
+  `updated_by` int(10) NULL DEFAULT NULL,
+  `updated_at` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0),
+  `status` enum('Active','Inactive') CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'Active',
+  PRIMARY KEY (`law_contract_property_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for law_lawyers
@@ -232,7 +310,7 @@ DROP TABLE IF EXISTS `law_properties_usage_license`;
 CREATE TABLE `law_properties_usage_license`  (
   `law_properties_usage_license_id` int(10) NOT NULL AUTO_INCREMENT,
   `law_properties_id` int(10) NULL DEFAULT NULL,
-  `usage_license_attachment_path` varchar(150) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `usage_license` varchar(150) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `description` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
   `created_by` int(10) NULL DEFAULT NULL,
   `created_at` datetime(0) NULL DEFAULT NULL,
@@ -1217,7 +1295,7 @@ CREATE TABLE `sys_dropdowns`  (
   `status` enum('Active','Inactive') CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'Active',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `dropdownslug`(`dropdown_slug`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_dropdowns
@@ -1226,6 +1304,10 @@ INSERT INTO `sys_dropdowns` VALUES (1, 'product-dropdown-grid', 'dropdown_grid',
 INSERT INTO `sys_dropdowns` VALUES (2, 'designation', 'dropdown', NULL, 'SELECT\r\ndesignations.designations_id,\r\ndesignations.designations_name', 'FROM\r\ndesignations', 'WHERE\r\ndesignations.`status` = \'Active\'', NULL, NULL, NULL, NULL, 'designations_id', 'designations_name', 0, '', 'designations_id', 'List of Designation', 23, '2018-12-12 17:00:00', NULL, '2019-02-13 10:54:56', 'Active');
 INSERT INTO `sys_dropdowns` VALUES (3, 'property-type', 'dropdown', NULL, 'SELECT law_property_type.law_property_type_id, law_property_type.law_property_type_name', 'FROM law_property_type', NULL, NULL, NULL, NULL, NULL, 'law_property_type_id', 'law_property_type_name', 0, NULL, 'law_property_type_id', 'Law Property Dropdown', NULL, '2019-12-23 13:38:22', NULL, NULL, 'Active');
 INSERT INTO `sys_dropdowns` VALUES (4, 'lawyer-list', 'dropdown', NULL, 'SELECT law_lawyers_id, CONCAT(law_lawyers_name, \' (\', contacts,\')\') AS lawyer_name', 'FROM law_lawyers', NULL, NULL, NULL, NULL, NULL, 'law_lawyers_id', 'lawyer_name', 0, NULL, 'law_lawyers_id', NULL, NULL, '2019-12-23 16:13:54', NULL, NULL, 'Active');
+INSERT INTO `sys_dropdowns` VALUES (6, 'buyer-list', 'dropdown', NULL, 'SELECT\r\nlaw_app_users.law_app_users_id,\r\nCONCAT(\r\nlaw_app_users.law_app_users_name, \' - \', law_app_users.email) AS app_user', 'FROM\r\nlaw_app_users', 'WHERE\r\nlaw_app_users.`status` = \'Active\'', NULL, NULL, NULL, NULL, 'law_app_users_id', 'app_user', 0, NULL, 'buyer_id', NULL, NULL, '2019-12-26 18:34:18', NULL, NULL, 'Active');
+INSERT INTO `sys_dropdowns` VALUES (7, 'seller-list', 'dropdown', NULL, 'SELECT\r\nlaw_app_users.law_app_users_id,\r\nCONCAT(\r\nlaw_app_users.law_app_users_name, \' - \', law_app_users.email) AS app_user', 'FROM\r\nlaw_app_users', 'WHERE\r\nlaw_app_users.`status` = \'Active\'', NULL, NULL, NULL, NULL, 'law_app_users_id', 'app_user', 0, NULL, 'seller_id', NULL, NULL, '2019-12-26 18:34:18', NULL, NULL, 'Active');
+INSERT INTO `sys_dropdowns` VALUES (8, 'notary-list', 'dropdown', NULL, 'SELECT\r\nlaw_notaries.law_notaries_id,\r\nCONCAT(law_notaries.law_notaries_name, \' - \', law_notaries.contacts) AS notary_name', 'FROM\r\nlaw_notaries', NULL, NULL, NULL, NULL, NULL, 'law_notaries_id', 'notary_name', 0, NULL, 'law_notaries_id', NULL, NULL, '2019-12-26 18:34:18', NULL, NULL, 'Active');
+INSERT INTO `sys_dropdowns` VALUES (9, 'bank-list', 'dropdown', NULL, 'SELECT\r\nlaw_banks.law_banks_id,\r\nlaw_banks.law_banks_name', 'FROM\r\nlaw_banks', 'WHERE `status` = \'Active\'', NULL, NULL, NULL, NULL, 'law_banks_id', 'law_banks_name', 0, NULL, 'law_banks_id', NULL, NULL, '2019-12-26 18:34:18', NULL, NULL, 'Active');
 
 -- ----------------------------
 -- Table structure for sys_master_entry
@@ -1256,7 +1338,7 @@ CREATE TABLE `sys_master_entry`  (
   PRIMARY KEY (`sys_master_entry_id`) USING BTREE,
   INDEX `u_table_name`(`sys_master_entry_name`) USING BTREE,
   INDEX `u_master_entry_title`(`master_entry_title`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_master_entry
@@ -1266,6 +1348,7 @@ INSERT INTO `sys_master_entry` VALUES (5, 'law_notaries', 'law_notaries', 'Law n
 INSERT INTO `sys_master_entry` VALUES (6, 'law_banks', 'law_banks', 'Law banks', NULL, 'ajax', 'default', 'default', NULL, 'post', 3, 'law_banks', 'validator', NULL, 0, NULL, NULL, NULL, 0, NULL, 'Active');
 INSERT INTO `sys_master_entry` VALUES (8, 'law_real_states', 'law_real_states', 'Law real states', NULL, 'ajax', 'default', 'default', NULL, 'post', 3, 'law_real_states', 'validator', NULL, 0, NULL, NULL, NULL, 0, NULL, 'Active');
 INSERT INTO `sys_master_entry` VALUES (9, 'law_property_type', 'law_property_type', 'Law property type', NULL, 'ajax', 'default', 'default', NULL, 'post', 3, 'law_property_type', 'validator', NULL, 0, NULL, NULL, NULL, 0, NULL, 'Active');
+INSERT INTO `sys_master_entry` VALUES (10, 'test_jony', 'test_jony', 'Test jony', NULL, 'ajax', 'default', 'default', NULL, 'post', 3, 'test_jony', 'validator', NULL, 0, NULL, NULL, NULL, 0, NULL, 'Active');
 
 -- ----------------------------
 -- Table structure for sys_master_entry_details
@@ -1298,7 +1381,7 @@ CREATE TABLE `sys_master_entry_details`  (
   `status` enum('Active','Inactive') CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'Active',
   PRIMARY KEY (`sys_master_entry_details_id`) USING BTREE,
   INDEX `master_entry`(`sys_master_entry_name`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 53 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 58 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_master_entry_details
@@ -1339,6 +1422,11 @@ INSERT INTO `sys_master_entry_details` VALUES (49, 'law_property_type', 'law_pro
 INSERT INTO `sys_master_entry_details` VALUES (50, 'law_property_type', 'law_property_type', 'description', 'Description', 'form-label', 'Enter Description', 'textarea', 3, 'description', 'form-control', NULL, NULL, 0, 0, NULL, NULL, 'combo', NULL, 0, NULL, NULL, NULL, 'Active');
 INSERT INTO `sys_master_entry_details` VALUES (51, 'law_property_type', 'law_property_type', 'status', 'Status', 'form-label', 'Enter Status', 'dropdown', 8, 'status', 'form-control', NULL, NULL, 0, 0, NULL, 'Active,Inactive', 'combo', NULL, 0, NULL, NULL, NULL, 'Active');
 INSERT INTO `sys_master_entry_details` VALUES (52, 'law_property_type', 'law_property_type', 'law_property_type_id', 'Submit Form', 'form-label', 'Submit Form', 'submit', 100, '', 'btn btn-primary', NULL, NULL, 0, 0, NULL, NULL, 'combo', NULL, 0, NULL, NULL, NULL, 'Active');
+INSERT INTO `sys_master_entry_details` VALUES (53, 'test_jony', 'test_jony', 'law_lawyers_id', 'Law Lawyers Id', 'form-label', 'Enter Law Lawyers Id', 'dropdown', 2, 'law_lawyers_id', 'form-control', NULL, NULL, 0, 0, 'law_lawyers', NULL, 'combo', NULL, 0, NULL, NULL, NULL, 'Active');
+INSERT INTO `sys_master_entry_details` VALUES (54, 'test_jony', 'test_jony', 'test_jony_name', 'Test Jony Name', 'form-label', 'Enter Test Jony Name', 'text', 3, 'test_jony_name', 'form-control', NULL, NULL, 0, 0, NULL, NULL, 'combo', NULL, 0, NULL, NULL, NULL, 'Active');
+INSERT INTO `sys_master_entry_details` VALUES (55, 'test_jony', 'test_jony', 'description', 'Description', 'form-label', 'Enter Description', 'textarea', 4, 'description', 'form-control', NULL, NULL, 0, 0, NULL, NULL, 'combo', NULL, 0, NULL, NULL, NULL, 'Active');
+INSERT INTO `sys_master_entry_details` VALUES (56, 'test_jony', 'test_jony', 'status', 'Status', 'form-label', 'Enter Status', 'dropdown', 9, 'status', 'form-control', NULL, NULL, 0, 0, NULL, 'Active,Inactive', 'combo', NULL, 0, NULL, NULL, NULL, 'Active');
+INSERT INTO `sys_master_entry_details` VALUES (57, 'test_jony', 'test_jony', 'test_jony_id', 'Submit Form', 'form-label', 'Submit Form', 'submit', 100, '', 'btn btn-primary', NULL, NULL, 0, 0, NULL, NULL, 'combo', NULL, 0, NULL, NULL, NULL, 'Active');
 
 -- ----------------------------
 -- Table structure for sys_master_grid
@@ -1376,7 +1464,7 @@ CREATE TABLE `sys_master_grid`  (
   `status` enum('Active','Inactive') CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'Active',
   PRIMARY KEY (`sys_master_grid_id`) USING BTREE,
   INDEX `u_table_name`(`sys_master_grid_name`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 148 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 149 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_master_grid
@@ -1396,6 +1484,7 @@ INSERT INTO `sys_master_grid` VALUES (143, 'law_notaries', 'law_notaries', 'law_
 INSERT INTO `sys_master_grid` VALUES (144, 'law_banks', 'law_banks', 'law_banks', 'Bank List', 'SELECT\r\nlaw_banks.law_banks_id,\r\nlaw_banks.law_banks_name name,\r\nlaw_banks.description,\r\nlaw_banks.`status`', 'FROM law_banks', NULL, NULL, NULL, NULL, NULL, 'law_banks', 'law_banks_id', NULL, '1', NULL, NULL, 1, NULL, 0, 0, 0, 0, NULL, NULL, 0, '2019-12-23 17:23:58', 'Active');
 INSERT INTO `sys_master_grid` VALUES (146, 'law_real_states', 'law_real_states', 'law_real_states', 'Real-State List', 'SELECT\r\nlaw_real_states.law_real_states_id,\r\nlaw_real_states.law_real_states_name name,\r\nlaw_real_states.email,\r\nlaw_real_states.seller_name seller,\r\nlaw_real_states.address,\r\nlaw_real_states.post_code,\r\nlaw_real_states.city,\r\nlaw_real_states.tax_number,\r\nlaw_real_states.ami_license,\r\nlaw_real_states.phone,\r\nlaw_real_states.description,\r\nlaw_real_states.`status`', 'FROM law_real_states', NULL, NULL, NULL, NULL, NULL, 'law_real_states', 'law_real_states_id', NULL, '1', NULL, NULL, 1, NULL, 0, 0, 0, 0, NULL, NULL, 0, '2019-12-23 17:26:20', 'Active');
 INSERT INTO `sys_master_grid` VALUES (147, 'law_property_type', 'law_property_type', 'law_property_type', 'Property Type', 'SELECT *', 'FROM law_property_type', NULL, NULL, NULL, NULL, NULL, 'law_property_type', 'law_property_type_id', NULL, '1', NULL, NULL, 1, NULL, 0, 0, 0, 0, NULL, NULL, 0, '2019-12-23 16:50:45', 'Active');
+INSERT INTO `sys_master_grid` VALUES (148, 'test_jony', 'test_jony', 'test_jony', 'Test jony', 'SELECT\r\ntest_jony.test_jony_id,\r\ntest_jony.law_lawyers_id,\r\ntest_jony.test_jony_name,\r\ntest_jony.description,\r\ntest_jony.`status`', 'FROM test_jony', NULL, NULL, NULL, NULL, NULL, 'test_jony', 'test_jony_id', NULL, '1', NULL, NULL, 1, NULL, 0, 0, 0, 0, NULL, NULL, 0, '2019-12-26 14:17:48', 'Active');
 
 -- ----------------------------
 -- Table structure for sys_menus
@@ -1432,7 +1521,7 @@ INSERT INTO `sys_menus` VALUES (7, 'Create Property', NULL, 'Sub', 5, 1, 'fa fa-
 INSERT INTO `sys_menus` VALUES (8, 'Property List', NULL, 'Sub', 5, 1, 'fa fa-list', 'propert-list', 2, 0, 0, NULL, NULL, 'Active');
 INSERT INTO `sys_menus` VALUES (9, 'User/Client Entry', NULL, 'Sub', 6, 1, 'fa fa-plus', 'client', 1, 0, 0, NULL, NULL, 'Active');
 INSERT INTO `sys_menus` VALUES (10, 'User/Client List', NULL, 'Sub', 6, 1, 'fa fa-list', 'client-list', 2, 0, 0, NULL, NULL, 'Active');
-INSERT INTO `sys_menus` VALUES (11, 'Purchase Contract', NULL, 'Main', 0, 1, 'fa fa-handshake-o', 'purchase', 7, 0, 0, NULL, NULL, 'Active');
+INSERT INTO `sys_menus` VALUES (11, 'Purchase Contract', NULL, 'Main', 0, 1, 'fa fa-handshake-o', 'contract', 7, 0, 0, NULL, NULL, 'Active');
 
 -- ----------------------------
 -- Table structure for sys_modules
@@ -1917,6 +2006,28 @@ CREATE TABLE `sys_users`  (
 -- ----------------------------
 -- Records of sys_users
 -- ----------------------------
-INSERT INTO `sys_users` VALUES (1, '1001', 'nirjhar', 'nirjhar@gmail.com', '$2y$10$Mdpv8wuH7XyOR7OsA.0fQ.Qo6X5zwiitDLxe4LycvegQYRT5IxdVS', '', 0, 'Nirjhar Mandal', NULL, '+8801855149196', '1993-01-04', '', 'Male', 'Married', '', '', '', '', '', '', '/img/users/1.jpg', 'Nikunjo, Uttra, Dhaka', NULL, '2019-01-07', '', 1, 'NwafMVSewBnGgGN4dgD7P8FKoVLl5aT5BCgEmAa1kGl5zxawhxRLRsdZoFZP', '2020-01-01 03:50:27', 0, NULL, '2019-05-05 11:15:53', '2019-12-24 19:03:58', 1, 'Active');
+INSERT INTO `sys_users` VALUES (1, '1001', 'nirjhar', 'nirjhar@gmail.com', '$2y$10$Mdpv8wuH7XyOR7OsA.0fQ.Qo6X5zwiitDLxe4LycvegQYRT5IxdVS', '', 0, 'Nirjhar Mandal', NULL, '+8801855149196', '1993-01-04', '', 'Male', 'Married', '', '', '', '', '', '', '/img/users/1.jpg', 'Nikunjo, Uttra, Dhaka', NULL, '2019-01-07', '', 1, 'cT7pdcsvcFMDxA8bc0Pj1Csxl4J8ysCjoSvO8vydYtPs67j5gfjyxi1IGIaT', '2020-01-01 03:50:27', 0, NULL, '2019-05-05 11:15:53', '2019-12-26 13:55:43', 1, 'Active');
+
+-- ----------------------------
+-- Table structure for test_jony
+-- ----------------------------
+DROP TABLE IF EXISTS `test_jony`;
+CREATE TABLE `test_jony`  (
+  `test_jony_id` int(10) NOT NULL AUTO_INCREMENT,
+  `law_lawyers_id` int(10) NULL DEFAULT NULL,
+  `test_jony_name` varchar(150) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `description` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+  `created_by` int(10) NULL DEFAULT NULL,
+  `created_at` datetime(0) NULL DEFAULT NULL,
+  `updated_by` int(10) NULL DEFAULT NULL,
+  `updated_at` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0),
+  `status` enum('Active','Inactive') CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'Active',
+  PRIMARY KEY (`test_jony_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of test_jony
+-- ----------------------------
+INSERT INTO `test_jony` VALUES (1, 1, 'Masum', NULL, 1, '2019-12-26 00:00:00', NULL, '2019-12-26 14:15:26', 'Active');
 
 SET FOREIGN_KEY_CHECKS = 1;
