@@ -29,5 +29,8 @@ class BladeServiceProvider extends ServiceProvider
         Blade::directive('dd', function($data) {
             return "<?php dd({$data}); ?>";
         });
+        Blade::directive('dd', function($data) {
+            return "<?php dd({$data}); ?>";
+        });
     }
 }

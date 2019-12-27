@@ -14,261 +14,128 @@
                 <div class="ibox ">
                     <div class="ibox-title">
                         <h2><i class="fa fa-users"></i> Buyer/Seller Entry</h2>
-                        {{--<div class="ibox-tools">--}}
-                        {{--<button class="btn btn-danger btn-xs no-display" id="delete-item"><i class="fa fa-remove" aria-hidden="true"></i> Delete</button>--}}
-                        {{--</div>--}}
+                        <div class="ibox-tools">
+                            <a class="btn btn-info btn-xs" id="" href="{{url('client')}}"><i class="fa fa-edit" aria-hidden="true"></i> New Entry</a>
+                        </div>
                     </div>
                     <div class="ibox-content">
-                        <form class="" id="basic_info" enctype="multipart/form-data" action="{{url('save-basic-info')}}" method="post">
+                        <form class="" id="basic_form" enctype="multipart/form-data" action="{{url('save-basic-info')}}" method="post">
                             <div class="row">
                                 <div class="form-group col-md-3">
                                     <label class="form-label">Email</label>
-                                    <input type="" name="email" value="" id="" class="form-control" required>
+                                    <input type="email" name="email" value="{{$user_data->email ?? ''}}" id="" class="form-control" required>
                                     <div class="help-block with-errors has-feedback"></div>
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label class="form-label">Full Name</label>
-                                    <input type="" name="law_app_users_name" value="" id="" class="form-control">
+                                    <input type="" name="law_app_users_name" value="{{$user_data->law_app_users_name ?? ''}}" id="" class="form-control" required>
                                     <div class="help-block with-errors has-feedback"></div>
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label class="form-label">Mobile Phone</label>
-                                    <input type="" name="mobile" value="" id="" class="form-control">
+                                    <input type="" name="mobile" value="{{$user_data->mobile ?? ''}}" id="" class="form-control">
                                     <div class="help-block with-errors has-feedback"></div>
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label class="form-label">Individual/Company</label>
-                                    @php($user_type_option = ['Individual','Company'])
+                                    @php($user_type_option = ['Individual'=>'Individual','Company'=>'Company'])
                                     {!! Form::select('user_type', $user_type_option, null, ['class' => 'form-control']) !!}
                                     <div class="help-block with-errors has-feedback"></div>
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label class="form-label">Representative Lawyer</label>
-                                    {{__combo('lawyer-list')}}
+                                    <?php
+                                        $lawyer_id = isset($user_data->law_lawyers_id) && !empty($user_data->law_lawyers_id) ? $user_data->law_lawyers_id : '';
+                                        $data_param = array(
+                                            'selected_value' => $lawyer_id
+                                        );
+                                    ?>
+                                    {{__combo('lawyer-list', $data_param)}}
                                     <div class="help-block with-errors has-feedback"></div>
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label class="form-label">Marriage type</label>
-                                    <input type="" name="marriage_type" value="" id="" class="form-control">
+                                    <input type="" name="marriage_type" value="{{$user_data->marriage_type ?? ''}}" id="" class="form-control">
                                     <div class="help-block with-errors has-feedback"></div>
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label class="form-label">Marital status</label>
-                                    @php($marrital_option = ['Married','Unmarried','Single'])
+                                    @php($marrital_option = ['Married'=>'Married','Unmarried'=>'Unmarried','Single'=>'Single'])
                                     {!! Form::select('marital_status',  $marrital_option, null, ['class' => 'form-control']) !!}
                                     <div class="help-block with-errors has-feedback"></div>
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label class="form-label">Bank account number</label>
-                                    <input type="" name="bank_account_number" value="" id="" class="form-control">
+                                    <input type="" name="bank_account_number" value="{{$user_data->bank_account_number ?? ''}}" id="" class="form-control">
                                     <div class="help-block with-errors has-feedback"></div>
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label class="form-label">Tax number</label>
-                                    <input type="" name="tax_number" value="" id="" class="form-control">
+                                    <input type="" name="tax_number" value="{{$user_data->tax_number ?? ''}}" id="" class="form-control">
                                     <div class="help-block with-errors has-feedback"></div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-3">
-                                    <button class="btn btn-info submit_button" data-style="zoom-in">SAVE ENTRY</button>
+                                    <button class="btn btn-info submit_basic" data-style="zoom-in"><i class="fa fa-save"></i> SAVE ENTRY</button>
                                 </div>
                             </div>
                         </form>
-                        <script>
-                            $('.submit_button').on('click', function (e) {
-                                Ladda.bind(this);
-                                var load = $(this).ladda();
-                                var submit_url = $('#basic_info').attr('action');
-
-                                $('#basic_info').validator().on('submit', function (e) {
-                                    if (!e.isDefaultPrevented()) {
-                                        e.preventDefault();
-                                        var formdata = $('#basic_info').serialize();
-                                        makeAjaxPost(formdata,submit_url,load).done((response) =>{
-                                            //$('#'+form_id).trigger("reset");
-                                            //swalRedirect('',"Operation Successfull");
-                                        });
-                                    }
-                                });
-                            });
-                        </script>
                         {{--------------------------}}
                         <div class="accordion mt-4" id="accordionExample">
-                            <h3 class="acc-heading mt-3" type="" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="fa fa-hand-o-right"></i> Citizen card</h3>
-                            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-                                <div class="row py-2">
-                                    <div class="form-group col-md-3">
-                                        <label class="form-label">Number</label>
-                                        <input type="" name="citizen_card_number" value="" id="" class="form-control">
-                                        <div class="help-block with-errors has-feedback"></div>
-                                    </div>
-                                    <div class="form-group col-md-3">
-                                        <label class="form-label">Expiry date</label>
-                                        <input type="" name="citizen_card_exp_date" value="" id="" class="form-control datepicker">
-                                        <div class="help-block with-errors has-feedback"></div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <button class="btn btn-info citizen_submit" data-style="zoom-in">SAVE ENTRY</button>
-                                    </div>
-                                </div>
-                            </div>
-                            {{--------------------------}}
-                            <h3 class="acc-heading mt-3" type="" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo"><i class="fa fa-hand-o-right"></i> Passport</h3>
-                            <div id="collapseTwo" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                                <form class="" id="passport_info" enctype="multipart/form-data" action="{{url('save-passport-info')}}" method="post">
-                                    <div class="row py-2">
-                                    <div class="form-group col-md-3">
-                                        <label class="form-label">Number</label>
-                                        <input type="" name="passport_number" value="" id="" class="form-control">
-                                        <div class="help-block with-errors has-feedback"></div>
-                                    </div>
-                                    <div class="form-group col-md-3">
-                                        <label class="form-label">Issue Date</label>
-                                        <input type="" name="passport_issue_date" value="" id="" class="form-control datepicker">
-                                        <div class="help-block with-errors has-feedback"></div>
-                                    </div>
-                                    <div class="form-group col-md-3">
-                                        <label class="form-label">Expiry date</label>
-                                        <input type="" name="passport_exp_date" value="" id="" class="form-control datepicker">
-                                        <div class="help-block with-errors has-feedback"></div>
-                                    </div>
-                                    <div class="form-group col-md-3">
-                                        <label class="form-label">Issue Entity</label>
-                                        <input type="" name="passport_issue_entity" value="" id="" class="form-control">
-                                        <div class="help-block with-errors has-feedback"></div>
-                                    </div>
-                                    <div class="form-group col-md-3">
-                                        <label class="form-label">Upload File</label>
-                                        <div class="custom-file">
-                                            <input id="passport_attachment_path" type="file" class="custom-file-input" name="passport_attachment_path"/>
-                                            <label for="logo" class="btn btn-default custom-file-label text-left">Choose file...</label>
-                                        </div>
-                                        {{--<input type="file" name="passport_attachment_path" value="" id="" class="form-control">--}}
-                                        <div class="help-block with-errors has-feedback"></div>
-                                    </div>
-                                </div>
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <button class="btn btn-info passport_submit" data-style="zoom-in">SAVE ENTRY</button>
-                                        </div>
-                                    </div>
-                                </form>
-                                <script>
-                                    $('.passport_submit').on('click', function (e) {
-                                        Ladda.bind(this);
-                                        var load = $(this).ladda();
-                                        var submit_url = $('#passport_info').attr('action');
-
-                                        $('#passport_info').validator().on('submit', function (e) {
-                                            if (!e.isDefaultPrevented()) {
-                                                e.preventDefault();
-                                                //var formdata = $('#passport_info').serialize();
-                                                var formData = new FormData(this);
-                                                //formData.append('file', $('#passport_attachment_path')[0].files[0]);
-                                                makeAjaxPostText(formData, submit_url, load).done(function (data) {
-                                                    load.ladda('stop');
-                                                    console.log(formData);
-                                                    console.log(data);
-                                                })
-                                            }
-                                        });
-                                    });
-                                </script>
-                            </div>
-                            {{--------------------------}}
-                            <h3 class="acc-heading mt-3" type="" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree"><i class="fa fa-hand-o-right"></i> Commercial certificate</h3>
-                            <div id="collapseThree" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-                                <div class="row py-2">
-                                    <div class="form-group col-md-3">
-                                        <label class="form-label">Upload File</label>
-                                        <div class="custom-file">
-                                            <input id="logo" type="file" class="custom-file-input" name="commercial_certificate_attachment_path"/>
-                                            <label for="logo" class="btn btn-default custom-file-label text-left">Choose file...</label>
-                                        </div>
-                                        {{--<input type="file" name="commercial_certificate_attachment_path" value="" id="" class="form-control">--}}
-                                        <div class="help-block with-errors has-feedback"></div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <button class="btn btn-info commercial_submit" data-style="zoom-in">SAVE ENTRY</button>
-                                    </div>
-                                </div>
-                            </div>
-                            {{--------------------------}}
-                            <h3 class="acc-heading mt-3" type="" data-toggle="collapse" data-target="#collapse4" aria-expanded="true" aria-controls="collapse4"><i class="fa fa-hand-o-right"></i> Legal representatives</h3>
-                            <div id="collapse4" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-                                <div class="row py-2">
-                                    <div class="form-group col-md-3">
-                                        <label class="form-label">Citizen card number</label>
-                                        <input type="" name="citizen_card_number" value="" id="" class="form-control">
-                                        <div class="help-block with-errors has-feedback"></div>
-                                    </div>
-                                    <div class="form-group col-md-3">
-                                        <label class="form-label">Upload File</label>
-                                        <div class="custom-file">
-                                            <input id="logo" type="file" class="custom-file-input" name="legal_representative_attachemnt_path"/>
-                                            <label for="logo" class="btn btn-default custom-file-label text-left">Choose file...</label>
-                                        </div>
-                                        {{--<input type="file" name="legal_representative_attachemnt_path" value="" id="" class="form-control">--}}
-                                        <div class="help-block with-errors has-feedback"></div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <button class="btn btn-info legal_submit" data-style="zoom-in">SAVE ENTRY</button>
-                                    </div>
-                                </div>
-                            </div>
-                            {{--------------------------}}
-                            <h3 class="acc-heading mt-3" type="" data-toggle="collapse" data-target="#collapse5" aria-expanded="true" aria-controls="collapse5"><i class="fa fa-hand-o-right"></i> Letter of attorney</h3>
-                            <div id="collapse5" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-                                <div class="row py-2">
-                                    <div class="form-group col-md-3">
-                                        <label class="form-label">Upload File</label>
-                                        <div class="custom-file">
-                                            <input id="logo" type="file" class="custom-file-input" name="letter_attorney_attachment_path"/>
-                                            <label for="logo" class="btn btn-default custom-file-label text-left">Choose file...</label>
-                                        </div>
-                                        {{--<input type="file" name="letter_attorney_attachment_path" value="" id="" class="form-control">--}}
-                                        <div class="help-block with-errors has-feedback"></div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <button class="btn btn-info letter_submit" data-style="zoom-in">SAVE ENTRY</button>
-                                    </div>
-                                </div>
-                            </div>
-                            {{--------------------------}}
-                            <h3 class="acc-heading mt-3" type="" data-toggle="collapse" data-target="#collapse6" aria-expanded="true" aria-controls="collapse6"><i class="fa fa-hand-o-right"></i> Transfers</h3>
-                            <div id="collapse6" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-                                <div class="row py-2">
-                                    <div class="form-group col-md-3">
-                                        <label class="form-label">Transfers</label>
-                                        <input type="" name="transfers_info" value="" id="" class="form-control">
-                                        <div class="help-block with-errors has-feedback"></div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <button class="btn btn-info transfer_submit" data-style="zoom-in">SAVE ENTRY</button>
-                                    </div>
-                                </div>
-                            </div>
+                            @include('Law.client_entry.citizen')
+                            @include('Law.client_entry.passport')
+                            @include('Law.client_entry.certificate')
+                            @include('Law.client_entry.legal')
+                            @include('Law.client_entry.letter')
+                            @include('Law.client_entry.transfer')
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <input type="" id="law_app_users_id" name="law_app_users_id" value="{{$user_data->law_app_users_id ?? ''}}"/>
     <script>
         $('.custom-file-input').on('change', function() {
             let fileName = $(this).val().split('\\').pop();
             $(this).next('.custom-file-label').addClass("selected").html(fileName);
+        });
+        /*****************************************/
+        $(document).ready(function () {
+            if($('#law_app_users_id').val().length !== 0){
+                $('.submit_info').prop('disabled', false);
+            }else{
+                $('.submit_info').prop('disabled', true);
+            }
+        });
+        /*****************************************/
+        $('.submit_info, .submit_basic').on('click', function (e) {
+            Ladda.bind(this);
+            var load = $(this).ladda();
+            var form_id = $(this).closest('form').attr('id');
+            var this_form = $('#'+form_id);
+            var submit_url = $(this_form).attr('action');
+            $(this_form).validator().on('submit', function (e) {
+                if (!e.isDefaultPrevented()) {
+                    e.preventDefault();
+                    var formData = new FormData(this);
+                    if($('#law_app_users_id').val().length !== 0){
+                        formData.append('law_app_users_id', $('#law_app_users_id').val());
+                    }
+                    makeAjaxPostText(formData, submit_url, load).done(function (response) {
+                        load.ladda('stop');
+                        if(form_id == 'basic_form'){
+                            $('#law_app_users_id').val(response.data.client_id);
+                            $('.submit_info').prop('disabled', false);
+                            var client_url = "{{url('client')}}"+'/'+response.data.client_id;
+
+                            window.history.pushState({},'', client_url);
+                        }
+                        swalSuccess(response.message);
+                    })
+                }
+            });
         });
     </script>
 @endsection

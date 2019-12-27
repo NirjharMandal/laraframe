@@ -170,7 +170,7 @@ function swalSuccess(msg) {
         html: message,
         type: 'success',
         showConfirmButton: false,
-        // timer: 1500
+        timer: 1500
     });
 }
 function swalRedirect(url, msg, mode) {

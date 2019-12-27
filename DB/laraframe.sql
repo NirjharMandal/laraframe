@@ -11,7 +11,7 @@
  Target Server Version : 50719
  File Encoding         : 65001
 
- Date: 26/12/2019 20:08:08
+ Date: 27/12/2019 20:01:29
 */
 
 SET NAMES utf8mb4;
@@ -30,6 +30,7 @@ CREATE TABLE `law_app_users`  (
   `email` varchar(150) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `mobile` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `law_lawyers_id` int(10) NULL DEFAULT NULL,
+  `bank_account_number` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `tax_number` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `citizen_card_number` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `citizen_card_exp_date` date NULL DEFAULT NULL,
@@ -40,7 +41,6 @@ CREATE TABLE `law_app_users`  (
   `passport_attachment_path` varchar(150) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `commercial_certificate_attachment_path` varchar(150) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `letter_attorney_attachment_path` varchar(150) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `bank_account_number` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `description` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
   `created_by` int(10) NULL DEFAULT NULL,
   `created_at` datetime(0) NULL DEFAULT NULL,
@@ -48,7 +48,7 @@ CREATE TABLE `law_app_users`  (
   `updated_at` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0),
   `status` enum('Active','Inactive') CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'Active',
   PRIMARY KEY (`law_app_users_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 29 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of law_app_users
@@ -57,6 +57,30 @@ INSERT INTO `law_app_users` VALUES (1, 'nirjhar', 'Individual', NULL, NULL, 'nir
 INSERT INTO `law_app_users` VALUES (2, 'masum', 'Individual', NULL, NULL, 'masum@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-26 18:31:45', 'Active');
 INSERT INTO `law_app_users` VALUES (3, 'jony', 'Individual', NULL, NULL, 'jony@gmial.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-26 18:32:00', 'Active');
 INSERT INTO `law_app_users` VALUES (4, 'Zim', 'Individual', NULL, NULL, 'zim@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-26 18:32:13', 'Active');
+INSERT INTO `law_app_users` VALUES (5, 'dasdasd', '', '', NULL, 'asdas', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-27 12:43:19', 'Active');
+INSERT INTO `law_app_users` VALUES (6, 'asdfas', 'Individual', 'Married', 'dfasdf', 'sfdsf', 'dfasdfasdfas', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-27 12:45:59', 'Active');
+INSERT INTO `law_app_users` VALUES (7, 'asdfas', 'Individual', 'Married', 'dfasdf', 'sfdsf', 'dfasdfasdfas', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-27 12:46:39', 'Active');
+INSERT INTO `law_app_users` VALUES (8, 'asdfas', 'Individual', 'Married', 'dfasdf', 'sfdsf', 'dfasdfasdfas', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-27 12:49:31', 'Active');
+INSERT INTO `law_app_users` VALUES (9, 'asdfas', 'Individual', 'Married', 'dfasdf', 'sfdsf', 'dfasdfasdfas', 1, NULL, 'sdfsdf', 'yuyu', '2019-12-10', 'asdasd', '2019-12-20', '2019-12-17', 'asd', 'client_files/9/passport_info.jpeg', 'client_files/9/commercial_certificate.pdf', 'client_files/9/letter_of_attorny.jpeg', NULL, NULL, NULL, NULL, '2019-12-27 19:20:04', 'Active');
+INSERT INTO `law_app_users` VALUES (10, 'asd', 'Individual', 'Married', NULL, 'aaa', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-27 12:58:44', 'Active');
+INSERT INTO `law_app_users` VALUES (11, 'fsdfsdf', 'Individual', 'Married', NULL, 'afsdsdfsd', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-27 12:59:48', 'Active');
+INSERT INTO `law_app_users` VALUES (12, 'fsdfsdf', 'Individual', 'Married', NULL, 'afsdsdfsd', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-27 12:59:59', 'Active');
+INSERT INTO `law_app_users` VALUES (13, 'fsdfsdf', 'Individual', 'Married', NULL, 'afsdsdfsd', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-27 13:00:38', 'Active');
+INSERT INTO `law_app_users` VALUES (14, 'zxcz', 'Individual', 'Married', NULL, 'zczxc', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-27 13:01:39', 'Active');
+INSERT INTO `law_app_users` VALUES (15, 'dasdasd', 'Individual', 'Married', NULL, 'asdas', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-27 13:01:55', 'Active');
+INSERT INTO `law_app_users` VALUES (16, 'asd', 'Individual', 'Married', NULL, 'asd', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-27 13:04:43', 'Active');
+INSERT INTO `law_app_users` VALUES (17, 'dasdasd', 'Individual', 'Married', NULL, 'asdas', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-27 13:05:10', 'Active');
+INSERT INTO `law_app_users` VALUES (18, 'asd', 'Individual', 'Married', 'asd', 'asdasd', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-27 13:06:47', 'Active');
+INSERT INTO `law_app_users` VALUES (19, 'asdsad', 'Individual', 'Married', NULL, 'asdasd', NULL, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-27 13:35:31', 'Active');
+INSERT INTO `law_app_users` VALUES (20, 'dasd', 'Individual', 'Married', NULL, 'asdas', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-27 13:41:44', 'Active');
+INSERT INTO `law_app_users` VALUES (21, 'asd', 'Individual', 'Married', NULL, 'asd', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-27 13:42:05', 'Active');
+INSERT INTO `law_app_users` VALUES (22, 'dasd', 'Individual', 'Married', NULL, 'asdas@ww', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-27 15:55:15', 'Active');
+INSERT INTO `law_app_users` VALUES (23, 'asas', 'Individual', 'Married', NULL, 'asas@asas', NULL, NULL, NULL, NULL, 'asas', '2019-12-11', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-27 16:06:59', 'Active');
+INSERT INTO `law_app_users` VALUES (24, 'dfsdf', 'Individual', 'Married', NULL, 'sdf@sdfs', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-27 16:16:51', 'Active');
+INSERT INTO `law_app_users` VALUES (25, 'fsdf', 'Individual', 'Married', NULL, 'sdff@sdfsd', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-27 16:17:22', 'Active');
+INSERT INTO `law_app_users` VALUES (26, 'sdasdas', 'Individual', 'Married', NULL, 'asdas@asda', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-27 16:18:15', 'Active');
+INSERT INTO `law_app_users` VALUES (27, 'sdasdas', 'Individual', 'Married', NULL, 'asdas@asda', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-27 16:18:16', 'Active');
+INSERT INTO `law_app_users` VALUES (28, 'sdasdasd', 'Individual', 'Married', NULL, 'dsf@Adsa', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-27 16:19:07', 'Active');
 
 -- ----------------------------
 -- Table structure for law_app_users_legal_representative
@@ -89,7 +113,15 @@ CREATE TABLE `law_app_users_transfer`  (
   `updated_at` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0),
   `status` enum('Active','Inactive') CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'Active',
   PRIMARY KEY (`law_app_users_transfer_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of law_app_users_transfer
+-- ----------------------------
+INSERT INTO `law_app_users_transfer` VALUES (8, 9, 'artge   arv   gaerva', NULL, NULL, NULL, '2019-12-27 19:51:03', 'Active');
+INSERT INTO `law_app_users_transfer` VALUES (9, 9, 'vaerv aegnd  h45y35tq  ra vreb', NULL, NULL, NULL, '2019-12-27 19:51:03', 'Active');
+INSERT INTO `law_app_users_transfer` VALUES (10, 9, 's rydn dfgndfg ndfgryrynd5hg fndndgh ndgh n4d6yfhnd dfhn dfhn  gnd', NULL, NULL, NULL, '2019-12-27 19:51:03', 'Active');
+INSERT INTO `law_app_users_transfer` VALUES (11, 9, 'nothing', NULL, NULL, NULL, '2019-12-27 19:51:03', 'Active');
 
 -- ----------------------------
 -- Table structure for law_banks
@@ -2006,7 +2038,7 @@ CREATE TABLE `sys_users`  (
 -- ----------------------------
 -- Records of sys_users
 -- ----------------------------
-INSERT INTO `sys_users` VALUES (1, '1001', 'nirjhar', 'nirjhar@gmail.com', '$2y$10$Mdpv8wuH7XyOR7OsA.0fQ.Qo6X5zwiitDLxe4LycvegQYRT5IxdVS', '', 0, 'Nirjhar Mandal', NULL, '+8801855149196', '1993-01-04', '', 'Male', 'Married', '', '', '', '', '', '', '/img/users/1.jpg', 'Nikunjo, Uttra, Dhaka', NULL, '2019-01-07', '', 1, 'cT7pdcsvcFMDxA8bc0Pj1Csxl4J8ysCjoSvO8vydYtPs67j5gfjyxi1IGIaT', '2020-01-01 03:50:27', 0, NULL, '2019-05-05 11:15:53', '2019-12-26 13:55:43', 1, 'Active');
+INSERT INTO `sys_users` VALUES (1, '1001', 'nirjhar', 'nirjhar@gmail.com', '$2y$10$Mdpv8wuH7XyOR7OsA.0fQ.Qo6X5zwiitDLxe4LycvegQYRT5IxdVS', '', 0, 'Nirjhar Mandal', NULL, '+8801855149196', '1993-01-04', '', 'Male', 'Married', '', '', '', '', '', '', '/img/users/1.jpg', 'Nikunjo, Uttra, Dhaka', NULL, '2019-01-07', '', 1, 'cT7pdcsvcFMDxA8bc0Pj1Csxl4J8ysCjoSvO8vydYtPs67j5gfjyxi1IGIaT', '2020-01-01 03:50:27', 0, NULL, '2019-05-05 11:15:53', '2019-12-27 18:34:31', 1, 'Active');
 
 -- ----------------------------
 -- Table structure for test_jony

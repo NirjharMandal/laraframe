@@ -256,7 +256,7 @@
                                 </div>
                             </div>
                             {{--------------------------}}
-                            <h3 class="acc-heading mt-3" type="" data-toggle="collapse" data-target="#collapse7" aria-expanded="true" aria-controls="collapse7"><i class="fa fa-hand-o-right"></i> ---Usage licence</h3>
+                            <h3 class="acc-heading mt-3" type="" data-toggle="collapse" data-target="#collapse7" aria-expanded="true" aria-controls="collapse7"><i class="fa fa-hand-o-right"></i> Usage licence</h3>
                             <div id="collapse7" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                                 <div class="row py-2">
                                     <div class="form-group col-md-6 license_field">
