@@ -8,16 +8,30 @@
                     <input id="logo" type="file" class="custom-file-input" name="commercial_certificate_attachment_path"/>
                     <label for="logo" class="btn btn-default custom-file-label text-left">
                         {{isset($user_data->commercial_certificate_attachment_path) && !empty($user_data->commercial_certificate_attachment_path)
-                            ? substr(strrchr($user_data->commercial_certificate_attachment_path, "/"), 1)
+                            ? 'Replace File...'
                             : 'Choose File...'}}
                     </label>
                 </div>
                 <div class="help-block with-errors has-feedback"></div>
             </div>
+            @if(isset($user_data->commercial_certificate_attachment_path) && !empty($user_data->commercial_certificate_attachment_path))
+                <div class="form-group col-md-3 pt-4 generalfilebox">
+                    <a class="btn btn-sm btn-success"
+                       href="{{asset('storage/attachment/'.$user_data->commercial_certificate_attachment_path)}}" download target="_blank">
+                        <i class="fa fa-download"></i> Download / View
+                    </a>
+                    <a class="btn btn-sm btn-danger delete_file_only" data-style="zoom-in"
+                       data-id="{{$user_data->law_app_users_id ?? ''}}"
+                       data-pathcolumn="commercial_certificate_attachment_path"
+                       data-path="{{$user_data->commercial_certificate_attachment_path ?? ''}}">
+                        <i class="fa fa-trash"></i> Delete File
+                    </a>
+                </div>
+            @endif
         </div>
         <div class="row">
             <div class="col-md-3">
-                <button class="btn btn-info submit_info" data-style="zoom-in">SAVE ENTRY</button>
+                <button class="btn btn-info submit_info" data-style="zoom-in"><i class="fa fa-edit"></i> SAVE</button>
             </div>
         </div>
     </form>

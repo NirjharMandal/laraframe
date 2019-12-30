@@ -11,7 +11,7 @@
  Target Server Version : 50719
  File Encoding         : 65001
 
- Date: 27/12/2019 20:01:29
+ Date: 30/12/2019 20:27:03
 */
 
 SET NAMES utf8mb4;
@@ -61,7 +61,7 @@ INSERT INTO `law_app_users` VALUES (5, 'dasdasd', '', '', NULL, 'asdas', NULL, N
 INSERT INTO `law_app_users` VALUES (6, 'asdfas', 'Individual', 'Married', 'dfasdf', 'sfdsf', 'dfasdfasdfas', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-27 12:45:59', 'Active');
 INSERT INTO `law_app_users` VALUES (7, 'asdfas', 'Individual', 'Married', 'dfasdf', 'sfdsf', 'dfasdfasdfas', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-27 12:46:39', 'Active');
 INSERT INTO `law_app_users` VALUES (8, 'asdfas', 'Individual', 'Married', 'dfasdf', 'sfdsf', 'dfasdfasdfas', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-27 12:49:31', 'Active');
-INSERT INTO `law_app_users` VALUES (9, 'asdfas', 'Individual', 'Married', 'dfasdf', 'sfdsf', 'dfasdfasdfas', 1, NULL, 'sdfsdf', 'yuyu', '2019-12-10', 'asdasd', '2019-12-20', '2019-12-17', 'asd', 'client_files/9/passport_info.jpeg', 'client_files/9/commercial_certificate.pdf', 'client_files/9/letter_of_attorny.jpeg', NULL, NULL, NULL, NULL, '2019-12-27 19:20:04', 'Active');
+INSERT INTO `law_app_users` VALUES (9, 'asdfas', 'Individual', 'Married', 'dfasdf', 'sfdsf', 'dfasdfasdfas', 1, NULL, 'sdfsdf', 'yuyu', '2019-12-10', 'asdasd zxx', '2019-12-20', '2019-12-17', 'asd', 'client_files/9/passport_info.pdf', 'client_files/9/commercial_certificate.pdf', 'client_files/9/letter_of_attorny.jpeg', NULL, NULL, NULL, NULL, '2019-12-30 20:24:08', 'Active');
 INSERT INTO `law_app_users` VALUES (10, 'asd', 'Individual', 'Married', NULL, 'aaa', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-27 12:58:44', 'Active');
 INSERT INTO `law_app_users` VALUES (11, 'fsdfsdf', 'Individual', 'Married', NULL, 'afsdsdfsd', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-27 12:59:48', 'Active');
 INSERT INTO `law_app_users` VALUES (12, 'fsdfsdf', 'Individual', 'Married', NULL, 'afsdsdfsd', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-27 12:59:59', 'Active');
@@ -97,7 +97,13 @@ CREATE TABLE `law_app_users_legal_representative`  (
   `updated_at` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0),
   `status` enum('Active','Inactive') CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'Active',
   PRIMARY KEY (`law_app_users_legal_representative_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of law_app_users_legal_representative
+-- ----------------------------
+INSERT INTO `law_app_users_legal_representative` VALUES (10, 9, '759768567856', 'client_files/9/legal_representative_1.jpeg', NULL, NULL, NULL, '2019-12-30 16:48:44', 'Active');
+INSERT INTO `law_app_users_legal_representative` VALUES (14, 9, '234234 234 234 234', 'client_files/9/Jj1xVPlRjXbMZcdUGCLUi19e7JJSVukDvvM2PDp6.pdf', NULL, NULL, NULL, '2019-12-30 18:04:42', 'Active');
 
 -- ----------------------------
 -- Table structure for law_app_users_transfer
@@ -113,15 +119,12 @@ CREATE TABLE `law_app_users_transfer`  (
   `updated_at` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0),
   `status` enum('Active','Inactive') CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'Active',
   PRIMARY KEY (`law_app_users_transfer_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 18 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of law_app_users_transfer
 -- ----------------------------
-INSERT INTO `law_app_users_transfer` VALUES (8, 9, 'artge   arv   gaerva', NULL, NULL, NULL, '2019-12-27 19:51:03', 'Active');
-INSERT INTO `law_app_users_transfer` VALUES (9, 9, 'vaerv aegnd  h45y35tq  ra vreb', NULL, NULL, NULL, '2019-12-27 19:51:03', 'Active');
-INSERT INTO `law_app_users_transfer` VALUES (10, 9, 's rydn dfgndfg ndfgryrynd5hg fndndgh ndgh n4d6yfhnd dfhn dfhn  gnd', NULL, NULL, NULL, '2019-12-27 19:51:03', 'Active');
-INSERT INTO `law_app_users_transfer` VALUES (11, 9, 'nothing', NULL, NULL, NULL, '2019-12-27 19:51:03', 'Active');
+INSERT INTO `law_app_users_transfer` VALUES (17, 9, 'qweqwe', NULL, NULL, NULL, '2019-12-30 13:39:14', 'Active');
 
 -- ----------------------------
 -- Table structure for law_banks
@@ -2038,7 +2041,7 @@ CREATE TABLE `sys_users`  (
 -- ----------------------------
 -- Records of sys_users
 -- ----------------------------
-INSERT INTO `sys_users` VALUES (1, '1001', 'nirjhar', 'nirjhar@gmail.com', '$2y$10$Mdpv8wuH7XyOR7OsA.0fQ.Qo6X5zwiitDLxe4LycvegQYRT5IxdVS', '', 0, 'Nirjhar Mandal', NULL, '+8801855149196', '1993-01-04', '', 'Male', 'Married', '', '', '', '', '', '', '/img/users/1.jpg', 'Nikunjo, Uttra, Dhaka', NULL, '2019-01-07', '', 1, 'cT7pdcsvcFMDxA8bc0Pj1Csxl4J8ysCjoSvO8vydYtPs67j5gfjyxi1IGIaT', '2020-01-01 03:50:27', 0, NULL, '2019-05-05 11:15:53', '2019-12-27 18:34:31', 1, 'Active');
+INSERT INTO `sys_users` VALUES (1, '1001', 'nirjhar', 'nirjhar@gmail.com', '$2y$10$Mdpv8wuH7XyOR7OsA.0fQ.Qo6X5zwiitDLxe4LycvegQYRT5IxdVS', '', 0, 'Nirjhar Mandal', NULL, '+8801855149196', '1993-01-04', '', 'Male', 'Married', '', '', '', '', '', '', '/img/users/1.jpg', 'Nikunjo, Uttra, Dhaka', NULL, '2019-01-07', '', 1, 'cT7pdcsvcFMDxA8bc0Pj1Csxl4J8ysCjoSvO8vydYtPs67j5gfjyxi1IGIaT', '2020-01-01 03:50:27', 0, NULL, '2019-05-05 11:15:53', '2019-12-30 11:38:25', 1, 'Active');
 
 -- ----------------------------
 -- Table structure for test_jony

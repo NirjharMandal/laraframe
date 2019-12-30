@@ -1,5 +1,5 @@
 <h3 class="acc-heading mt-3" type="" data-toggle="collapse" data-target="#collapse6" aria-expanded="true" aria-controls="collapse6"><i class="fa fa-hand-o-right"></i> Transfers</h3>
-<div id="collapse6" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+<div id="collapse6" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
     <form class="" id="transfer_form" enctype="multipart/form-data" action="{{url('save-transfer-info')}}" method="post">
         <div class="row py-2">
             <div class="form-group col-md-6 transfer_field">
@@ -28,7 +28,7 @@
         @endif
         <div class="row">
             <div class="col-md-3">
-                <button class="btn btn-info submit_info" data-style="zoom-in">SAVE ENTRY</button>
+                <button class="btn btn-info submit_info" data-style="zoom-in"><i class="fa fa-edit"></i> SAVE</button>
             </div>
         </div>
     </form>
@@ -46,7 +46,7 @@
                 $('.transferhtml').append(transferhtml);
             }
         });
-        $('.transferhtml').on('click', '.transfer_remove', function(e){
+        $(document).on('click', '.transfer_remove', function(e){
             e.preventDefault();
             $(this).parent('div').parent('div').remove();
             x--;

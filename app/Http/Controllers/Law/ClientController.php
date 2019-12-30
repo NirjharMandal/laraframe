@@ -95,11 +95,13 @@ class ClientController extends Controller {
         $path = null;
         $success = 0;
         if($request->exists('law_app_users_id')){
-            $post_data = $request->all();
             if($request->hasFile('passport_attachment_path')){
+                $post_data = $request->all();
                 $file = $request->file('passport_attachment_path');
                 $directory = 'client_files/'.$post_data['law_app_users_id'];
                 $post_data['passport_attachment_path'] = $this->fileUploadToStorage($file, $directory, 'passport_info');
+            }else{
+                $post_data = $request->except(['passport_attachment_path']);
             }
             $success = DB::table('law_app_users')->where('law_app_users_id', $post_data['law_app_users_id'])->update($post_data);
         }
@@ -149,7 +151,7 @@ class ClientController extends Controller {
             if($request->hasFile('letter_attorney_attachment_path')){
                 $file = $request->file('letter_attorney_attachment_path');
                 $directory = 'client_files/'.$post_data['law_app_users_id'];
-                $post_data['letter_attorney_attachment_path'] = $this->fileUploadToStorage($file, $directory, 'letter_of_attorny');
+                $post_data['letter_attorney_attachment_path'] = $this->fileUploadToStorage($file, $directory, 'letterofattorney');
             }
             $success = DB::table('law_app_users')->where('law_app_users_id', $post_data['law_app_users_id'])->update($post_data);
         }
@@ -161,20 +163,52 @@ class ClientController extends Controller {
         return response()->json($respons_arr);
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function saveLegal(Request $request){
-        dd($request->all());
-        //$respons_arr = [];
-        //return response()->json($respons_arr);
+        $success = 0;
+        if($request->exists('law_app_users_id')){
+            $post_data = $request->all();
+            $insert_data = [];
+
+            foreach ($post_data['citizen_card_number'] as $k => $citizen_card_number){
+                if($citizen_card_number != ''){
+                    if($request->hasFile('legal_representative_attachemnt_path.'.$k)){
+                        $file = $request->file('legal_representative_attachemnt_path.'.$k);
+                        $directory = 'client_files/'.$post_data['law_app_users_id'];
+                        $legal_representative_attachemnt_path = $this->fileUploadToStorage($file, $directory);
+                    }
+                    $insert_data[$k]['law_app_users_id'] = $post_data['law_app_users_id'];
+                    $insert_data[$k]['citizen_card_number'] = $citizen_card_number;
+                    $insert_data[$k]['legal_representative_attachemnt_path'] = $legal_representative_attachemnt_path;
+                }
+            }
+            $success = DB::table('law_app_users_legal_representative')->insert($insert_data);
+        }
+        $respons_arr = [
+            'success' => $success,
+            'message' => 'Data Saved Successfully',
+            'data' => []
+        ];
+        return response()->json($respons_arr);
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function saveTransfer(Request $request){
         $success = 0;
         if($request->exists('law_app_users_id')){
             $post_data = $request->all();
             $insert_data = [];
             foreach ($post_data['transfers_info'] as $k => $transfers_info){
-                $insert_data[$k]['law_app_users_id'] = $post_data['law_app_users_id'];
-                $insert_data[$k]['transfers_info'] = $transfers_info;
+                if($transfers_info != ''){
+                    $insert_data[$k]['law_app_users_id'] = $post_data['law_app_users_id'];
+                    $insert_data[$k]['transfers_info'] = $transfers_info;
+                }
             }
             DB::table('law_app_users_transfer')->where('law_app_users_id', $post_data['law_app_users_id'])->delete();
             $success = DB::table('law_app_users_transfer')->insert($insert_data);
@@ -188,6 +222,7 @@ class ClientController extends Controller {
     }
     /******************************************************************************/
     /******************************************************************************/
+
     /**
      * @param $file
      * @param $directory
@@ -206,6 +241,30 @@ class ClientController extends Controller {
             $path = $storage->putFile($directory, $file);
         }
         return $path;
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function removeFileRecord(Request $request){
+        $storage = Storage::disk('attachment');
+        $success = 0;
+        $record = 0;
+        $deleted = 0;
+        if($request->removerow == 1){
+            $record = DB::table($request->table)->where($request->key, $request->value)->delete();
+        }else{
+            DB::table($request->table)->where($request->key, $request->value)->update([$request->pathcolumn => NULL]);
+        }
+        $deleted = $storage->delete($request->pathvalue);
+        if($record == 1 && $deleted == 1) $success == 1;
+        $respons_arr = [
+            'success' => $success,
+            'message' => 'Data Saved Successfully',
+            'data' => []
+        ];
+        return response()->json($respons_arr);
     }
 }
 

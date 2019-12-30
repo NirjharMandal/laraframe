@@ -95,11 +95,12 @@
             </div>
         </div>
     </div>
-    <input type="" id="law_app_users_id" name="law_app_users_id" value="{{$user_data->law_app_users_id ?? ''}}"/>
+    <input type="hidden" id="law_app_users_id" name="law_app_users_id" value="{{$user_data->law_app_users_id ?? ''}}"/>
     <script>
-        $('.custom-file-input').on('change', function() {
+        $(document).on('change', '.custom-file-input', function () {
             let fileName = $(this).val().split('\\').pop();
             $(this).next('.custom-file-label').addClass("selected").html(fileName);
+
         });
         /*****************************************/
         $(document).ready(function () {
@@ -129,11 +130,39 @@
                             $('#law_app_users_id').val(response.data.client_id);
                             $('.submit_info').prop('disabled', false);
                             var client_url = "{{url('client')}}"+'/'+response.data.client_id;
-
                             window.history.pushState({},'', client_url);
                         }
-                        swalSuccess(response.message);
+                        var redirect_url = "{{Request::url()}}"
+                        //swalSuccess(response.message);
+                        swalRedirect(redirect_url, 'Data Saved Successfully', 'success')
                     })
+                }
+            });
+        });
+        /*****************************************/
+        $('.delete_file_only').on('click', function (e) {
+            e.preventDefault();
+            Ladda.bind(this);
+            var obj = $(this);
+            var load = $(this).ladda();
+            var id = $(this).data('id');
+            var pathcolumn = $(this).data('pathcolumn');
+            var path = $(this).data('path');
+            var url = "{{url('remove-file-record')}}";
+            swalConfirm('Are You sure to delete this file?').then(function (s) {
+                if(s.value){
+                    var data = {
+                        table: 'law_app_users',
+                        key: 'law_app_users_id',
+                        value: id,
+                        removerow: 0,
+                        pathcolumn: pathcolumn,
+                        pathvalue: path
+                    };
+                    makeAjaxPost(data, url, load).done(function(sresult){
+                        $(obj).closest('.generalfilebox').remove();
+                        swalSuccess('Deleted Successfully');
+                    });
                 }
             });
         });

@@ -1,4 +1,7 @@
 <?php
+
+
+
 Route::get('property', 'Law\PropertyController@propertyEntry')->name('property');
 
 
@@ -12,3 +15,8 @@ Route::post('save-letter-info', 'Law\ClientController@saveLetter')->name('save-l
 Route::post('save-transfer-info', 'Law\ClientController@saveTransfer')->name('save-transfer-info');
 
 Route::get('contract', 'Law\ContractController@contractEntry')->name('contract');
+
+
+
+
+Route::post('remove-file-record', 'Law\ClientController@removeFileRecord')->name('contract');

@@ -23,7 +23,7 @@
     };
     var user_id = '<?php echo $user_id; ?>';
     Pusher.logToConsole = true;
-    var pusher = new Pusher('ac15b98c527836e12ea3', {
+    var pusher = new Pusher('afe21d88348c434e8cf1', {
         cluster: 'ap2',
         forceTLS: true
     });

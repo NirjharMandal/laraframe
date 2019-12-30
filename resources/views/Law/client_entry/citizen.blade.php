@@ -15,7 +15,7 @@
         </div>
         <div class="row">
             <div class="col-md-3">
-                <button class="btn btn-info submit_info" data-style="zoom-in">SAVE ENTRY</button>
+                <button class="btn btn-info submit_info" data-style="zoom-in"><i class="fa fa-edit"></i> SAVE</button>
             </div>
         </div>
     </form>
