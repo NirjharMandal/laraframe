@@ -26,11 +26,13 @@
                 <label class="form-label">Upload File</label>
                 <div class="custom-file">
                     <input id="passport_attachment_path" type="file" class="custom-file-input" name="passport_attachment_path"/>
-                    <label for="logo" class="btn btn-default custom-file-label text-left">{{isset($user_data->passport_attachment_path) && !empty($user_data->passport_attachment_path) ? 'Replace File...' : 'Choose File...'}}</label>
+                    <label for="logo" class="btn btn-default custom-file-label text-left">
+                        {{isset($user_data->passport_attachment_path) && !empty($user_data) ? 'Replace File...' : 'Choose File...'}}
+                    </label>
                 </div>
                 <div class="help-block with-errors has-feedback"></div>
             </div>
-            @if(isset($user_data->passport_attachment_path) && !empty($user_data->passport_attachment_path))
+            @if(isset($user_data->passport_attachment_path) && !empty($user_data))
                 <div class="form-group col-md-3 pt-4 generalfilebox">
                     <a class="btn btn-sm btn-success"
                        href="{{asset('storage/attachment/'.$user_data->passport_attachment_path)}}" download target="_blank">

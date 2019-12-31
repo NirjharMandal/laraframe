@@ -1,9 +1,18 @@
 <?php
-
-
-
-Route::get('property', 'Law\PropertyController@propertyEntry')->name('property');
-
+Route::get('property/{propertyid?}', 'Law\PropertyController@propertyEntry')->name('property');
+Route::post('save-property-info', 'Law\PropertyController@saveBasicInfo')->name('save-basic-info');
+Route::post('save-land-info', 'Law\PropertyController@saveLandInfo')->name('save-land-info');
+Route::post('save-toponomic-info', 'Law\PropertyController@saveToponomicInfo')->name('save-toponomic-info');
+Route::post('save-municipal-info', 'Law\PropertyController@saveMunicipalInfo')->name('save-municipal-info');
+Route::post('save-map-info', 'Law\PropertyController@saveMapInfo')->name('save-map-info');
+Route::post('save-fiscal-info', 'Law\PropertyController@saveFiscalInfo')->name('save-fiscal-info');
+Route::post('save-cityhall-info', 'Law\PropertyController@saveCityhallInfo')->name('save-cityhall-info');
+Route::post('save-energy-info', 'Law\PropertyController@saveEnergyInfo')->name('save-energy-info');
+Route::post('save-technical-info', 'Law\PropertyController@saveTechnicalInfo')->name('save-technical-info');
+Route::post('save-constitutive-info', 'Law\PropertyController@saveConstitutiveInfo')->name('save-constitutive-info');
+Route::post('save-infrastructures-info', 'Law\PropertyController@saveInfrastructuresInfo')->name('save-infrastructures-info');
+Route::post('save-usage-info', 'Law\PropertyController@saveUsageLicense')->name('save-usage-info');
+Route::post('save-burden-info', 'Law\PropertyController@saveBurdenProperty')->name('save-burden-info');
 
 Route::get('client/{clientid?}', 'Law\ClientController@clientEntry')->name('client');
 Route::post('save-basic-info', 'Law\ClientController@saveBasicInfo')->name('save-basic-info');
@@ -19,4 +28,4 @@ Route::get('contract', 'Law\ContractController@contractEntry')->name('contract')
 
 
 
-Route::post('remove-file-record', 'Law\ClientController@removeFileRecord')->name('contract');
+Route::post('remove-file-record', 'Law\LawController@removeFileRecord')->name('contract');

@@ -20,7 +20,7 @@
                     </div>
                     <div class="ibox-content">
                         <form class="" id="basic_form" enctype="multipart/form-data" action="{{url('save-basic-info')}}" method="post">
-                            <div class="row">
+                            <div class="row py-2">
                                 <div class="form-group col-md-3">
                                     <label class="form-label">Email</label>
                                     <input type="email" name="email" value="{{$user_data->email ?? ''}}" id="" class="form-control" required>
@@ -45,7 +45,7 @@
                                 <div class="form-group col-md-3">
                                     <label class="form-label">Representative Lawyer</label>
                                     <?php
-                                        $lawyer_id = isset($user_data->law_lawyers_id) && !empty($user_data->law_lawyers_id) ? $user_data->law_lawyers_id : '';
+                                        $lawyer_id = isset($user_data->law_lawyers_id) && !empty($user_data) ? $user_data->law_lawyers_id : '';
                                         $data_param = array(
                                             'selected_value' => $lawyer_id
                                         );
@@ -129,10 +129,11 @@
                         if(form_id == 'basic_form'){
                             $('#law_app_users_id').val(response.data.client_id);
                             $('.submit_info').prop('disabled', false);
-                            var client_url = "{{url('client')}}"+'/'+response.data.client_id;
-                            window.history.pushState({},'', client_url);
+                            var redirect_url = "{{url('client')}}"+'/'+response.data.client_id;
+                            window.history.pushState({},'', redirect_url);
+                        }else{
+                            var redirect_url = "{{Request::url()}}"
                         }
-                        var redirect_url = "{{Request::url()}}"
                         //swalSuccess(response.message);
                         swalRedirect(redirect_url, 'Data Saved Successfully', 'success')
                     })

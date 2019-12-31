@@ -3,15 +3,15 @@
     <form class="" id="legal_form" enctype="multipart/form-data" action="{{url('save-legal-info')}}" method="post">
         <div class="row py-2">
             <div class="form-group col-md-3 legal_card">
-                <label class="form-label">Citizen card number</label>
+                <label class="form-label">Citizen Card Number</label>
                 <input type="" name="citizen_card_number[]" value="" id="" class="form-control">
                 <div class="help-block with-errors has-feedback"></div>
             </div>
             <div class="form-group col-md-3 legal_file">
                 <label class="form-label">Upload File</label>
                 <div class="custom-file">
-                    <input id="logo" type="file" class="custom-file-input" name="legal_representative_attachemnt_path[]"/>
-                    <label for="logo" class="btn btn-default custom-file-label text-left">Choose file...</label>
+                    <input id="" type="file" class="custom-file-input" name="legal_representative_attachemnt_path[]"/>
+                    <label for="" class="btn btn-default custom-file-label text-left">Choose file...</label>
                 </div>
                 <div class="help-block with-errors has-feedback"></div>
             </div>
@@ -26,7 +26,7 @@
                     <tbody>
                         @foreach($legal_data as $lg_data)
                             <tr id="legal_old_{{$lg_data->law_app_users_legal_representative_id}}">
-                                <td class="py-2" width="1%"><i class="fa fa-files-o"></i></td>
+                                <td class="py-2" width="1%" style="padding: 10px !important;"><i class="fa fa-file"></i></td>
                                 <td class="py-2" width="90%">{{$lg_data->citizen_card_number}}</td>
                                 <td class="py-2">
                                     <a class="btn btn-xs btn-success"
