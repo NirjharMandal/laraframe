@@ -16,12 +16,12 @@
                 <label class="form-label">Upload File</label>
                 <div class="custom-file">
                     <input id="" type="file" class="custom-file-input" name="burden_attachment_path[]"/>
-                    <label for="" class="btn btn-default custom-file-label text-left">Choose file...</label>
+                    <label for="" class="btn btn-default custom-file-label text-left"><i class="fa fa-paperclip"></i> File...</label>
                 </div>
                 <div class="help-block with-errors has-feedback"></div>
             </div>
             <div class="col-md-3">
-                <a class="btn btn-xs btn-warning brdn_add mt-4" data-style="zoom-in"><i class="fa fa-plus-circle"></i> Add Another</a>
+                <a class="btn btn-xs btn-warning brdn_add mt-4" data-style="zoom-in"><i class="fa fa-plus-circle"></i> Add More</a>
             </div>
         </div>
         <div class="brdnhtml"></div>

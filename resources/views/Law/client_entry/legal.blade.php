@@ -11,7 +11,7 @@
                 <label class="form-label">Upload File</label>
                 <div class="custom-file">
                     <input id="" type="file" class="custom-file-input" name="legal_representative_attachemnt_path[]"/>
-                    <label for="" class="btn btn-default custom-file-label text-left">Choose file...</label>
+                    <label for="" class="btn btn-default custom-file-label text-left"><i class="fa fa-paperclip"></i> File...</label>
                 </div>
                 <div class="help-block with-errors has-feedback"></div>
             </div>

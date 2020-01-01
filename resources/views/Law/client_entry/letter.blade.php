@@ -7,9 +7,9 @@
                 <div class="custom-file">
                     <input id="logo" type="file" class="custom-file-input" name="letter_attorney_attachment_path"/>
                     <label for="logo" class="btn btn-default custom-file-label text-left">
-                        {{isset($user_data->letter_attorney_attachment_path) && !empty($user_data->letter_attorney_attachment_path)
-                            ? 'Replace File...'
-                            : 'Choose File...'}}
+                        {!! isset($user_data->letter_attorney_attachment_path) && !empty($user_data->letter_attorney_attachment_path)
+                            ? '<i class="fa fa-paperclip"></i> File...'
+                            : '<i class="fa fa-paperclip"></i> File...' !!}
                     </label>
                 </div>
                 <div class="help-block with-errors has-feedback"></div>

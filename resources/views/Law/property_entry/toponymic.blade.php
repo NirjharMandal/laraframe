@@ -16,7 +16,7 @@
                 <label class="form-label">Upload File</label>
                 <div class="custom-file">
                     <input id="logo" type="file" class="custom-file-input" name="toponymic_certificate_attachment_path"/>
-                    <label for="logo" class="btn btn-default custom-file-label text-left">Choose file...</label>
+                    <label for="logo" class="btn btn-default custom-file-label text-left"><i class="fa fa-paperclip"></i> File...</label>
                 </div>
                 <div class="help-block with-errors has-feedback"></div>
             </div>

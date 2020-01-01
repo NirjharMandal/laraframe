@@ -17,7 +17,7 @@
                 <div class="custom-file">
                     <input id="logo" type="file" class="custom-file-input" name="technical_certificate_attachment_path"/>
                     <label for="logo" class="btn btn-default custom-file-label text-left">
-                        {{isset($property_data->technical_certificate_attachment_path) && !empty($property_data) ? 'Replace File...' : 'Choose File...'}}
+                        {!! isset($property_data->technical_certificate_attachment_path) && !empty($property_data) ? '<i class="fa fa-paperclip"></i> File...' : '<i class="fa fa-paperclip"></i> File...' !!}
                     </label>
                 </div>
                 <div class="help-block with-errors has-feedback"></div>

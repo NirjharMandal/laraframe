@@ -11,7 +11,7 @@
  Target Server Version : 50719
  File Encoding         : 65001
 
- Date: 30/12/2019 20:27:03
+ Date: 01/01/2020 19:10:03
 */
 
 SET NAMES utf8mb4;
@@ -48,7 +48,7 @@ CREATE TABLE `law_app_users`  (
   `updated_at` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0),
   `status` enum('Active','Inactive') CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'Active',
   PRIMARY KEY (`law_app_users_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 29 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 32 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of law_app_users
@@ -59,9 +59,9 @@ INSERT INTO `law_app_users` VALUES (3, 'jony', 'Individual', NULL, NULL, 'jony@g
 INSERT INTO `law_app_users` VALUES (4, 'Zim', 'Individual', NULL, NULL, 'zim@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-26 18:32:13', 'Active');
 INSERT INTO `law_app_users` VALUES (5, 'dasdasd', '', '', NULL, 'asdas', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-27 12:43:19', 'Active');
 INSERT INTO `law_app_users` VALUES (6, 'asdfas', 'Individual', 'Married', 'dfasdf', 'sfdsf', 'dfasdfasdfas', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-27 12:45:59', 'Active');
-INSERT INTO `law_app_users` VALUES (7, 'asdfas', 'Individual', 'Married', 'dfasdf', 'sfdsf', 'dfasdfasdfas', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-27 12:46:39', 'Active');
-INSERT INTO `law_app_users` VALUES (8, 'asdfas', 'Individual', 'Married', 'dfasdf', 'sfdsf', 'dfasdfasdfas', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-27 12:49:31', 'Active');
-INSERT INTO `law_app_users` VALUES (9, 'asdfas', 'Individual', 'Married', 'dfasdf', 'sfdsf', 'dfasdfasdfas', 1, NULL, 'sdfsdf', 'yuyu', '2019-12-10', 'asdasd zxx', '2019-12-20', '2019-12-17', 'asd', 'client_files/9/passport_info.pdf', 'client_files/9/commercial_certificate.pdf', 'client_files/9/letter_of_attorny.jpeg', NULL, NULL, NULL, NULL, '2019-12-30 20:24:08', 'Active');
+INSERT INTO `law_app_users` VALUES (7, 'asdfas', 'Individual', 'Married', 'dfasdf', 'sfdsf', 'dfasdfasdfas', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'client_files/7/passport_info.txt', NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-31 13:57:38', 'Active');
+INSERT INTO `law_app_users` VALUES (8, 'asdfas', 'Individual', 'Married', 'dfasdf', 'sfdsf', 'dfasdfasdfas', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'client_files/8/commercial_certificate.txt', NULL, NULL, NULL, NULL, NULL, '2019-12-31 13:57:22', 'Active');
+INSERT INTO `law_app_users` VALUES (9, 'asdfas', 'Individual', 'Married', 'dfasdf', 'sfdsf@fff.ll', 'dfasdfasdfas', 1, NULL, 'sdfsdf', 'yuyu', '2019-12-10', 'asdasd zxx', '2019-12-20', '2019-12-17', 'asd', 'client_files/9/passport_info.pdf', 'client_files/9/commercial_certificate.jpeg', 'client_files/9/letter_of_attorny.jpeg', NULL, NULL, NULL, NULL, '2019-12-31 20:00:40', 'Active');
 INSERT INTO `law_app_users` VALUES (10, 'asd', 'Individual', 'Married', NULL, 'aaa', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-27 12:58:44', 'Active');
 INSERT INTO `law_app_users` VALUES (11, 'fsdfsdf', 'Individual', 'Married', NULL, 'afsdsdfsd', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-27 12:59:48', 'Active');
 INSERT INTO `law_app_users` VALUES (12, 'fsdfsdf', 'Individual', 'Married', NULL, 'afsdsdfsd', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-27 12:59:59', 'Active');
@@ -81,6 +81,9 @@ INSERT INTO `law_app_users` VALUES (25, 'fsdf', 'Individual', 'Married', NULL, '
 INSERT INTO `law_app_users` VALUES (26, 'sdasdas', 'Individual', 'Married', NULL, 'asdas@asda', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-27 16:18:15', 'Active');
 INSERT INTO `law_app_users` VALUES (27, 'sdasdas', 'Individual', 'Married', NULL, 'asdas@asda', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-27 16:18:16', 'Active');
 INSERT INTO `law_app_users` VALUES (28, 'sdasdasd', 'Individual', 'Married', NULL, 'dsf@Adsa', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-27 16:19:07', 'Active');
+INSERT INTO `law_app_users` VALUES (29, 'sdfsdfsdfsd', 'Company', 'Married', NULL, 'asd@sfdsf', 'fsdfsd', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-31 13:18:02', 'Active');
+INSERT INTO `law_app_users` VALUES (30, 'dasd', 'Individual', 'Married', NULL, 'asd@asdas', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-31 13:18:59', 'Active');
+INSERT INTO `law_app_users` VALUES (31, 'sdf', 'Individual', 'Married', 'sdfdsf', 'asd@dfsf.sdf', NULL, NULL, 'ssss', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-31 13:30:56', 'Active');
 
 -- ----------------------------
 -- Table structure for law_app_users_legal_representative
@@ -97,7 +100,7 @@ CREATE TABLE `law_app_users_legal_representative`  (
   `updated_at` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0),
   `status` enum('Active','Inactive') CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'Active',
   PRIMARY KEY (`law_app_users_legal_representative_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of law_app_users_legal_representative
@@ -318,7 +321,17 @@ CREATE TABLE `law_properties`  (
   `updated_at` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0),
   `status` enum('Active','Inactive') CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'Active',
   PRIMARY KEY (`law_properties_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of law_properties
+-- ----------------------------
+INSERT INTO `law_properties` VALUES (1, 1, 'sssssssssss', 'sssssssssss ssssssssssssssssssssssss', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-31 13:08:17', 'Active');
+INSERT INTO `law_properties` VALUES (2, 2, 'sssssssssssss ssssssssss', 's             ssssssssssssssssssssssssssssssss ssssssss', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-31 13:09:55', 'Active');
+INSERT INTO `law_properties` VALUES (3, 1, '5', '5', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-31 13:13:26', 'Active');
+INSERT INTO `law_properties` VALUES (4, 1, 'aa', 'aa', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-31 13:14:35', 'Active');
+INSERT INTO `law_properties` VALUES (5, 2, 'adas fas', 'dfasdgfads', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-31 13:33:05', 'Active');
+INSERT INTO `law_properties` VALUES (6, 2, 'asd', 'asdas aaa ll', 'ss', 's', 'sad as', 'd asda', 'as da', 'sd asd', NULL, 'rewr', '2019-12-19', NULL, 'sss', 'ss', 'ss', 'aaa', 'aaa', 'aaa', 'sss', 'property_files/6/fiscalregistrycertificate.jpeg', 'sss', '2019-12-25', '2019-12-04', NULL, 'asdas', 'dasdas', 'dasdas', '2019-12-05', '2019-12-20', 'property_files/6/energyregistrycertificate.pdf', 'aaaaaaaaaaaa', '2019-12-19', 'property_files/6/technicalcertificate.jpeg', 'opop', '2019-12-13', 'property_files/6/constitutiveact.pdf', NULL, NULL, NULL, '2019-12-31 19:22:35', 'Active');
 
 -- ----------------------------
 -- Table structure for law_properties_burden_of_property
@@ -336,7 +349,12 @@ CREATE TABLE `law_properties_burden_of_property`  (
   `updated_at` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0),
   `status` enum('Active','Inactive') CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'Active',
   PRIMARY KEY (`law_properties_burden_of_property_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of law_properties_burden_of_property
+-- ----------------------------
+INSERT INTO `law_properties_burden_of_property` VALUES (2, 6, 'asd', '345', 'property_files/6/Ec5sGn8i9OWHVyGZvYrh5hQCxzhO9bYZAx9caent.jpeg', NULL, NULL, NULL, '2019-12-31 18:06:34', 'Active');
 
 -- ----------------------------
 -- Table structure for law_properties_usage_license
@@ -353,7 +371,13 @@ CREATE TABLE `law_properties_usage_license`  (
   `updated_at` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0),
   `status` enum('Active','Inactive') CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'Active',
   PRIMARY KEY (`law_properties_usage_license_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of law_properties_usage_license
+-- ----------------------------
+INSERT INTO `law_properties_usage_license` VALUES (4, 6, 'sdfsdf', NULL, NULL, NULL, NULL, '2019-12-31 17:31:22', 'Active');
+INSERT INTO `law_properties_usage_license` VALUES (5, 6, 'sdfsdfsdf', NULL, NULL, NULL, NULL, '2019-12-31 17:31:22', 'Active');
 
 -- ----------------------------
 -- Table structure for law_property_type
@@ -1330,7 +1354,7 @@ CREATE TABLE `sys_dropdowns`  (
   `status` enum('Active','Inactive') CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'Active',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `dropdownslug`(`dropdown_slug`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_dropdowns
@@ -1343,6 +1367,7 @@ INSERT INTO `sys_dropdowns` VALUES (6, 'buyer-list', 'dropdown', NULL, 'SELECT\r
 INSERT INTO `sys_dropdowns` VALUES (7, 'seller-list', 'dropdown', NULL, 'SELECT\r\nlaw_app_users.law_app_users_id,\r\nCONCAT(\r\nlaw_app_users.law_app_users_name, \' - \', law_app_users.email) AS app_user', 'FROM\r\nlaw_app_users', 'WHERE\r\nlaw_app_users.`status` = \'Active\'', NULL, NULL, NULL, NULL, 'law_app_users_id', 'app_user', 0, NULL, 'seller_id', NULL, NULL, '2019-12-26 18:34:18', NULL, NULL, 'Active');
 INSERT INTO `sys_dropdowns` VALUES (8, 'notary-list', 'dropdown', NULL, 'SELECT\r\nlaw_notaries.law_notaries_id,\r\nCONCAT(law_notaries.law_notaries_name, \' - \', law_notaries.contacts) AS notary_name', 'FROM\r\nlaw_notaries', NULL, NULL, NULL, NULL, NULL, 'law_notaries_id', 'notary_name', 0, NULL, 'law_notaries_id', NULL, NULL, '2019-12-26 18:34:18', NULL, NULL, 'Active');
 INSERT INTO `sys_dropdowns` VALUES (9, 'bank-list', 'dropdown', NULL, 'SELECT\r\nlaw_banks.law_banks_id,\r\nlaw_banks.law_banks_name', 'FROM\r\nlaw_banks', 'WHERE `status` = \'Active\'', NULL, NULL, NULL, NULL, 'law_banks_id', 'law_banks_name', 0, NULL, 'law_banks_id', NULL, NULL, '2019-12-26 18:34:18', NULL, NULL, 'Active');
+INSERT INTO `sys_dropdowns` VALUES (10, 'property-list', 'dropdown', NULL, 'SELECT law_properties_id, CONCAT(law_properties_name, \' - \', property_description) property_options', 'FROM law_properties', NULL, NULL, NULL, NULL, NULL, 'law_properties_id', 'property_options', 0, NULL, 'law_properties_id', NULL, NULL, '2020-01-01 18:04:14', NULL, NULL, 'Active');
 
 -- ----------------------------
 -- Table structure for sys_master_entry
@@ -2041,7 +2066,7 @@ CREATE TABLE `sys_users`  (
 -- ----------------------------
 -- Records of sys_users
 -- ----------------------------
-INSERT INTO `sys_users` VALUES (1, '1001', 'nirjhar', 'nirjhar@gmail.com', '$2y$10$Mdpv8wuH7XyOR7OsA.0fQ.Qo6X5zwiitDLxe4LycvegQYRT5IxdVS', '', 0, 'Nirjhar Mandal', NULL, '+8801855149196', '1993-01-04', '', 'Male', 'Married', '', '', '', '', '', '', '/img/users/1.jpg', 'Nikunjo, Uttra, Dhaka', NULL, '2019-01-07', '', 1, 'cT7pdcsvcFMDxA8bc0Pj1Csxl4J8ysCjoSvO8vydYtPs67j5gfjyxi1IGIaT', '2020-01-01 03:50:27', 0, NULL, '2019-05-05 11:15:53', '2019-12-30 11:38:25', 1, 'Active');
+INSERT INTO `sys_users` VALUES (1, '1001', 'nirjhar', 'nirjhar@gmail.com', '$2y$10$Mdpv8wuH7XyOR7OsA.0fQ.Qo6X5zwiitDLxe4LycvegQYRT5IxdVS', '', 0, 'Nirjhar Mandal', NULL, '+8801855149196', '1993-01-04', '', 'Male', 'Married', '', '', '', '', '', '', '/img/users/1.jpg', 'Nikunjo, Uttra, Dhaka', NULL, '2019-01-07', '', 1, 'cT7pdcsvcFMDxA8bc0Pj1Csxl4J8ysCjoSvO8vydYtPs67j5gfjyxi1IGIaT', '2020-01-01 03:50:27', 0, NULL, '2019-05-05 11:15:53', '2020-01-01 15:51:13', 1, 'Active');
 
 -- ----------------------------
 -- Table structure for test_jony

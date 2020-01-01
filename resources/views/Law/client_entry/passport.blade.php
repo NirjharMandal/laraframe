@@ -27,7 +27,7 @@
                 <div class="custom-file">
                     <input id="passport_attachment_path" type="file" class="custom-file-input" name="passport_attachment_path"/>
                     <label for="logo" class="btn btn-default custom-file-label text-left">
-                        {{isset($user_data->passport_attachment_path) && !empty($user_data) ? 'Replace File...' : 'Choose File...'}}
+                        {!! isset($user_data->passport_attachment_path) && !empty($user_data) ? '<i class="fa fa-paperclip"></i> File...' : '<i class="fa fa-paperclip"></i> File...' !!}
                     </label>
                 </div>
                 <div class="help-block with-errors has-feedback"></div>

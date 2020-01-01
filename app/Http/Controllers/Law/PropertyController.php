@@ -1,14 +1,13 @@
 <?php
-
 namespace App\Http\Controllers\Law;
 
+use App\Http\Controllers\Law\LawController AS LawController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
 use Auth;
 use Session;
 use Illuminate\Support\Facades\Storage;
-use App\Http\Controllers\Law\LawController;
 
 class PropertyController extends Controller {
     public function __construct(){
@@ -17,10 +16,7 @@ class PropertyController extends Controller {
     }
 
     public function propertyEntry($propertid = null){
-
-        if($propertid){
-            $data = LawController::getPropertyInfo($propertid);
-        }
+        $data = LawController::getPropertyInfo($propertid);
         return view('Law.property_entry', $data);
     }
 

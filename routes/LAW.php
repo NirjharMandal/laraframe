@@ -24,7 +24,7 @@ Route::post('save-letter-info', 'Law\ClientController@saveLetter')->name('save-l
 Route::post('save-transfer-info', 'Law\ClientController@saveTransfer')->name('save-transfer-info');
 
 Route::get('contract', 'Law\ContractController@contractEntry')->name('contract');
-
+Route::post('save-contract-info', 'Law\ContractController@saveContractInfo')->name('save-contract-info');
 
 
 

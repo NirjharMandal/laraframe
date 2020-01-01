@@ -1,0 +1,17 @@
+.acc-heading{
+    border-bottom: 1px solid #bbb;
+    font-weight: initial;
+    line-height: 2;
+    cursor: pointer;
+}
+.custom-file-label.selected{
+    background-color: #eee;
+    font-weight: bold;
+}
+.custom-file-label::after {
+    display: contents;
+    content: "";
+}
+.b-t{
+    border-top: 1px solid #e7eaec !important;
+}

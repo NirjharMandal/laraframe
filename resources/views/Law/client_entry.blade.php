@@ -1,13 +1,5 @@
 @extends('layouts.app')
 @section('content')
-    <style>
-        .acc-heading{
-            border-bottom: 1px solid #bbb;
-            font-weight: initial;
-            line-height: 2;
-            cursor: pointer;
-        }
-    </style>
     <div class="wrapper wrapper-content animated fadeInUp">
         <div class="row">
             <div class="col-lg-12 no-padding">
@@ -99,8 +91,8 @@
     <script>
         $(document).on('change', '.custom-file-input', function () {
             let fileName = $(this).val().split('\\').pop();
-            $(this).next('.custom-file-label').addClass("selected").html(fileName);
-
+            let changedlabel = '<i class="fa fa-check"></i> File Selected';
+            $(this).next('.custom-file-label').addClass("selected").html(changedlabel);
         });
         /*****************************************/
         $(document).ready(function () {

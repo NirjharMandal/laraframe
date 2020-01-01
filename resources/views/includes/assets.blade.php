@@ -9,12 +9,10 @@
 <link href="{{asset('public/css/Laraframe.css')}}" rel="stylesheet newest">
 <link href="{{asset('public/css/plugins/ladda/ladda-themeless.min.css')}}" rel="stylesheet">
 <link href="{{asset('public/css/plugins/daterangepicker/daterangepicker.css')}}" rel="stylesheet"/>
-{{--<link href="{{asset('public/js/plugins/jquery-ui/jquery-ui.min.css')}}" rel="stylesheet"/>--}}
-
-<link href="{{asset('public/css/srcil_style.css')}}" rel="stylesheet newest">
+{{--<link href="{{asset('public/css/srcil_style.css')}}" rel="stylesheet newest">--}}
+<link href="{{asset('public/css/law.css')}}" rel="stylesheet newest">
 {{--JS--}}
 <script src="{{asset('public/js/jquery-3.1.1.min.js')}}"></script>
-{{--<script src="{{asset('public/js/plugins/jquery-ui/jquery-ui.min.js')}}"></script>--}}
 <script src="{{asset('public/js/popper.min.js')}}"></script>
 <script src="{{asset('public/js/bootstrap.js')}}"></script>
 <script src="{{asset('public/js/moment.min.js')}}"></script>

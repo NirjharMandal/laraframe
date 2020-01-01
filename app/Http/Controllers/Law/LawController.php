@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Law;
 
 use Illuminate\Http\Request;
@@ -36,6 +35,34 @@ class LawController extends Controller {
             $data['transfer_data'] = DB::table('law_app_users_transfer')
                 ->select('law_app_users_transfer_id','transfers_info')
                 ->where('law_app_users_id', $client_id)
+                ->get();
+        }
+        return $data;
+    }
+
+    /**
+     * @param $contract_id
+     * @return array
+     */
+    public static function getContractInfo($contract_id){
+        $data = [];
+        $data['$contract_data'] = [];
+        $data['legal_data'] = [];
+        $data['transfer_data'] = [];
+        if($contract_id){
+            $data['user_data'] = DB::table('law_app_users')
+                ->select('law_app_users_id','law_app_users_name','user_type','marital_status','marriage_type','email','mobile','law_lawyers_id',
+                    'bank_account_number','tax_number','citizen_card_number','citizen_card_exp_date','passport_number','passport_issue_date','passport_exp_date',
+                    'passport_issue_entity','passport_attachment_path','commercial_certificate_attachment_path','letter_attorney_attachment_path','status')
+                ->where('law_app_users_id', $contract_id)
+                ->get()->first();
+            $data['legal_data'] = DB::table('law_app_users_legal_representative')
+                ->select('law_app_users_legal_representative_id','citizen_card_number','legal_representative_attachemnt_path')
+                ->where('law_app_users_id', $contract_id)
+                ->get();
+            $data['transfer_data'] = DB::table('law_app_users_transfer')
+                ->select('law_app_users_transfer_id','transfers_info')
+                ->where('law_app_users_id', $contract_id)
                 ->get();
         }
         return $data;

@@ -16,8 +16,23 @@ body{
     display: block;
     overflow: hidden;
 }
+.sidebar-logo{
+    display: block;
+    text-align: center;
+    padding: 15px;
+}
+.mini-navbar .sidebar-logo{
+    padding: 10px;
+}
 #wrapper{
     background-color: #131319d1;
+}
+.wrapper{
+    position: relative;
+    z-index: 1;
+}
+.wrapper-content{
+    padding: 0 0 15px 0;
 }
 .ibox {
     margin-bottom: 0;
@@ -158,9 +173,6 @@ ul.nav.metismenu li a {
     .dataTables_paginate {
         float: right;
     }
-}
-.wrapper-content {
-    padding: 10px 0px 25px;
 }
 .ibox-content {
     padding: 15px;
