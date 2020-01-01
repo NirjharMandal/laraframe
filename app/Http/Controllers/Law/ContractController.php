@@ -23,11 +23,18 @@ class ContractController extends Controller {
     public function saveContractInfo(Request $request){
         $success = 0;
         if($request->exists('law_contract_id')){
-            $post_data = $request->all();
-            dd($post_data);
+            DB::table('law_contract')->where('law_contract_id', $request->law_contract_id)->update(['buyer_id' => $request->buyer_id,'seller_id' => $request->seller_id]);
+            $contract_id = $request->law_contract_id;
+        }else {
+            $buyer_seller_entry = [
+                'buyer_id' => $request->buyer_id,
+                'seller_id' => $request->seller_id
+            ];
+            $contract_id = DB::table('law_contract')->insertGetId($buyer_seller_entry);
+        }
             $insert_data = [];
 
-            foreach ($post_data['law_properties_burden_bank'] as $k => $properties_burden_bank){
+/*            foreach ($post_data['law_properties_burden_bank'] as $k => $properties_burden_bank){
                 if($properties_burden_bank != ''){
                     if($request->hasFile('burden_attachment_path.'.$k)){
                         $file = $request->file('burden_attachment_path.'.$k);
@@ -40,8 +47,7 @@ class ContractController extends Controller {
                     $insert_data[$k]['burden_attachment_path'] = $burden_attachment_path;
                 }
             }
-            $success = DB::table('law_properties_burden_of_property')->insert($insert_data);
-        }
+            $success = DB::table('law_properties_burden_of_property')->insert($insert_data);*/
         $respons_arr = [
             'success' => $success,
             'message' => 'Data Saved Successfully',
