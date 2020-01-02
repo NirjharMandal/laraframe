@@ -59,15 +59,15 @@
                     makeAjaxPostText(formData, submit_url, load).done(function (response) {
                         load.ladda('stop');
                         if(form_id == 'basic_form'){
-                            $('#law_contract_id').val(response.data.client_id);
+                            $('#law_contract_id').val(response.data.contract_id);
                             $('.submit_info').prop('disabled', false);
-                            var redirect_url = "{{url('client')}}"+'/'+response.data.client_id;
+                            var redirect_url = "{{url('contract')}}"+'/'+response.data.contract_id;
                             window.history.pushState({},'', redirect_url);
                         }else{
                             var redirect_url = "{{Request::url()}}"
                         }
-                        //swalSuccess(response.message);
-                        swalRedirect(redirect_url, 'Data Saved Successfully', 'success')
+                        swalSuccess(response.message);
+                        //swalRedirect(redirect_url, 'Data Saved Successfully', 'success')
                     })
                 }
             });
@@ -75,25 +75,31 @@
         /*****************************************/
         $('.delete_file_only').on('click', function (e) {
             e.preventDefault();
-            Ladda.bind(this);
             var obj = $(this);
-            var load = $(this).ladda();
-            var id = $(this).data('id');
-            var pathcolumn = $(this).data('pathcolumn');
-            var path = $(this).data('path');
+            Ladda.bind(obj);
+            var load = $(obj).ladda();
+            var removerow = 0
+            var table = $(obj).data('table');
+            var key = $(obj).data('key');
+            var id = $(obj).data('id');
+            var path_column = $(obj).data('pathcolumn');
+            var path = $(obj).data('path');
+            if($(obj).hasClass('row_rm')){
+                var removerow = 1;
+            }
             var url = "{{url('remove-file-record')}}";
             swalConfirm('Are You sure to delete this file?').then(function (s) {
                 if(s.value){
-                    var data = {
-                        table: 'law_contract',
-                        key: 'law_contract_id',
-                        value: id,
-                        removerow: 0,
-                        pathcolumn: pathcolumn,
-                        pathvalue: path
-                    };
+                    var data = {table: table, key: key, value: id, removerow: removerow, pathcolumn: path_column, pathvalue: path};
+                    console.log(data);
                     makeAjaxPost(data, url, load).done(function(sresult){
-                        $(obj).closest('.generalfilebox').remove();
+                        if($(obj).hasClass('property_file')){
+                            $(obj).parent('div').replaceWith('N/A');
+                        }else if($(obj).hasClass('row_rm')){
+                            $('#record_'+id).remove();
+                        }else{
+                            $(obj).closest('.generalfilebox').remove();
+                        }
                         swalSuccess('Deleted Successfully');
                     });
                 }

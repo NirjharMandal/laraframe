@@ -23,8 +23,15 @@ Route::post('save-legal-info', 'Law\ClientController@saveLegal')->name('save-leg
 Route::post('save-letter-info', 'Law\ClientController@saveLetter')->name('save-letter-info');
 Route::post('save-transfer-info', 'Law\ClientController@saveTransfer')->name('save-transfer-info');
 
-Route::get('contract', 'Law\ContractController@contractEntry')->name('contract');
+Route::get('contract/{contractid?}', 'Law\ContractController@contractEntry')->name('contract');
 Route::post('save-contract-info', 'Law\ContractController@saveContractInfo')->name('save-contract-info');
+Route::post('save-reservation-info', 'Law\ContractController@saveReservationInfo')->name('save-reservation-info');
+Route::post('save-deal-info', 'Law\ContractController@saveDealInfo')->name('save-deal-info');
+Route::post('save-promise-info', 'Law\ContractController@savePromiseInfo')->name('save-promise-info');
+Route::post('save-annexed-info', 'Law\ContractController@saveAnnexedInfo')->name('save-annexed-info');
+Route::post('save-deed-info', 'Law\ContractController@saveDeedInfo')->name('save-deed-info');
+Route::post('save-financial-info', 'Law\ContractController@saveFinancialInfo')->name('save-financial-info');
+Route::post('save-payment-method-info', 'Law\ContractController@savePaymentMethodInfo')->name('save-payment-method-info');
 
 
 

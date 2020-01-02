@@ -11,7 +11,7 @@
  Target Server Version : 50719
  File Encoding         : 65001
 
- Date: 01/01/2020 19:10:03
+ Date: 02/01/2020 19:56:41
 */
 
 SET NAMES utf8mb4;
@@ -172,7 +172,7 @@ CREATE TABLE `law_contract`  (
   `deed_payment_method` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `law_banks_id` int(10) NULL DEFAULT NULL,
   `bank_mutual_value` varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `bank_stamp_tax` decimal(10, 3) NULL DEFAULT NULL COMMENT 'calculated as 6% of mutual value',
+  `bank_stamp_tax` decimal(12, 2) NULL DEFAULT NULL COMMENT 'calculated as 6% of mutual value',
   `bank_agency` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `bank_responsible_name` varchar(150) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `bank_responsible_contact` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
@@ -182,7 +182,33 @@ CREATE TABLE `law_contract`  (
   `updated_at` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0),
   `status` enum('Active','Inactive') CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'Active',
   PRIMARY KEY (`law_contract_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 23 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of law_contract
+-- ----------------------------
+INSERT INTO `law_contract` VALUES (1, 5, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-01-01 19:22:29', 'Active');
+INSERT INTO `law_contract` VALUES (2, 2, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-01-02 11:42:14', 'Active');
+INSERT INTO `law_contract` VALUES (3, 2, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-01-02 11:43:25', 'Active');
+INSERT INTO `law_contract` VALUES (4, 2, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-01-02 11:44:33', 'Active');
+INSERT INTO `law_contract` VALUES (5, 7, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-01-02 11:45:04', 'Active');
+INSERT INTO `law_contract` VALUES (6, 7, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-01-02 11:47:50', 'Active');
+INSERT INTO `law_contract` VALUES (7, 7, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-01-02 11:48:15', 'Active');
+INSERT INTO `law_contract` VALUES (8, 7, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-01-02 11:48:38', 'Active');
+INSERT INTO `law_contract` VALUES (9, 7, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-01-02 11:48:57', 'Active');
+INSERT INTO `law_contract` VALUES (10, 7, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-01-02 11:49:05', 'Active');
+INSERT INTO `law_contract` VALUES (11, 7, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-01-02 11:53:19', 'Active');
+INSERT INTO `law_contract` VALUES (12, 7, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-01-02 11:53:39', 'Active');
+INSERT INTO `law_contract` VALUES (13, 7, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-01-02 12:15:11', 'Active');
+INSERT INTO `law_contract` VALUES (14, 7, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-01-02 12:18:26', 'Active');
+INSERT INTO `law_contract` VALUES (15, 7, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-01-02 12:26:15', 'Active');
+INSERT INTO `law_contract` VALUES (16, 7, 3, '2020-01-30', 'contract_files/16/reservationagreement.jpeg', 123.89, 0.00, '2020-01-14', 'qweqwe', 'client_files/16/promisecontract.pdf', 'client_files/16/annexeddocument.jpeg', '2020-01-16', 1, '102344567990.22', 2, NULL, 6140674079.41, 'xxx', 'aaa', 'zzz', NULL, NULL, NULL, '2020-01-02 17:51:15', 'Active');
+INSERT INTO `law_contract` VALUES (17, 7, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-01-02 12:34:00', 'Active');
+INSERT INTO `law_contract` VALUES (18, 7, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-01-02 12:37:15', 'Active');
+INSERT INTO `law_contract` VALUES (19, 4, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-01-02 13:28:13', 'Active');
+INSERT INTO `law_contract` VALUES (20, 4, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-01-02 13:29:08', 'Active');
+INSERT INTO `law_contract` VALUES (21, 4, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-01-02 13:29:21', 'Active');
+INSERT INTO `law_contract` VALUES (22, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-01-02 18:09:53', 'Active');
 
 -- ----------------------------
 -- Table structure for law_contract_initial_payment
@@ -199,7 +225,13 @@ CREATE TABLE `law_contract_initial_payment`  (
   `updated_at` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0),
   `status` enum('Active','Inactive') CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'Active',
   PRIMARY KEY (`law_contract_initial_payment_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of law_contract_initial_payment
+-- ----------------------------
+INSERT INTO `law_contract_initial_payment` VALUES (4, 16, 'aaaaa', NULL, NULL, NULL, NULL, '2020-01-02 18:05:46', 'Active');
+INSERT INTO `law_contract_initial_payment` VALUES (5, 16, 'dddd', NULL, NULL, NULL, NULL, '2020-01-02 18:05:46', 'Active');
 
 -- ----------------------------
 -- Table structure for law_contract_property
@@ -207,6 +239,7 @@ CREATE TABLE `law_contract_initial_payment`  (
 DROP TABLE IF EXISTS `law_contract_property`;
 CREATE TABLE `law_contract_property`  (
   `law_contract_property_id` int(10) NOT NULL AUTO_INCREMENT,
+  `law_properties_id` int(10) NOT NULL,
   `law_contract_id` int(10) NOT NULL,
   `price` decimal(15, 2) NULL DEFAULT NULL,
   `water_attachment_path` varchar(150) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
@@ -219,7 +252,15 @@ CREATE TABLE `law_contract_property`  (
   `updated_at` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0),
   `status` enum('Active','Inactive') CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'Active',
   PRIMARY KEY (`law_contract_property_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of law_contract_property
+-- ----------------------------
+INSERT INTO `law_contract_property` VALUES (4, 1, 19, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-01-02 13:28:13', 'Active');
+INSERT INTO `law_contract_property` VALUES (5, 1, 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-01-02 13:29:08', 'Active');
+INSERT INTO `law_contract_property` VALUES (6, 1, 21, NULL, 'contract_files/21/hWF0iMtLkrO5RDAcxO8o6eJRFXH2mo0Gz2iorYcE.pdf', NULL, NULL, NULL, NULL, NULL, NULL, '2020-01-02 13:29:21', 'Active');
+INSERT INTO `law_contract_property` VALUES (8, 5, 16, 123.00, NULL, 'contract_files/16/lbV4OSWw5rOpNGnZ0g3vDzYnGnB5CAKYm1ngIsEt.jpeg', NULL, 'contract_files/16/ZNViatlTi2CobmfykalGxFJdGFrQZuUcoNi1I7iu.pdf', NULL, NULL, NULL, '2020-01-02 19:20:18', 'Active');
 
 -- ----------------------------
 -- Table structure for law_lawyers
@@ -331,7 +372,7 @@ INSERT INTO `law_properties` VALUES (2, 2, 'sssssssssssss ssssssssss', 's       
 INSERT INTO `law_properties` VALUES (3, 1, '5', '5', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-31 13:13:26', 'Active');
 INSERT INTO `law_properties` VALUES (4, 1, 'aa', 'aa', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-31 13:14:35', 'Active');
 INSERT INTO `law_properties` VALUES (5, 2, 'adas fas', 'dfasdgfads', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-31 13:33:05', 'Active');
-INSERT INTO `law_properties` VALUES (6, 2, 'asd', 'asdas aaa ll', 'ss', 's', 'sad as', 'd asda', 'as da', 'sd asd', NULL, 'rewr', '2019-12-19', NULL, 'sss', 'ss', 'ss', 'aaa', 'aaa', 'aaa', 'sss', 'property_files/6/fiscalregistrycertificate.jpeg', 'sss', '2019-12-25', '2019-12-04', NULL, 'asdas', 'dasdas', 'dasdas', '2019-12-05', '2019-12-20', 'property_files/6/energyregistrycertificate.pdf', 'aaaaaaaaaaaa', '2019-12-19', 'property_files/6/technicalcertificate.jpeg', 'opop', '2019-12-13', 'property_files/6/constitutiveact.pdf', NULL, NULL, NULL, '2019-12-31 19:22:35', 'Active');
+INSERT INTO `law_properties` VALUES (6, 2, 'asd', 'asdas aaa ll', 'ss', 's', 'sad as', 'd asda', 'as da', 'sd asd', 'property_files/6/landregistrycertificate.jpeg', 'rewr', '2019-12-19', NULL, 'sss', 'ss', 'ss', 'aaa', 'aaa', 'aaa', 'sss', 'property_files/6/fiscalregistrycertificate.jpeg', 'sss', '2019-12-25', '2019-12-04', NULL, 'asdas', 'dasdas', 'dasdas', '2019-12-05', '2019-12-20', 'property_files/6/energyregistrycertificate.pdf', 'aaaaaaaaaaaa', '2019-12-19', 'property_files/6/technicalcertificate.jpeg', 'opop', '2019-12-13', 'property_files/6/constitutiveact.pdf', NULL, NULL, NULL, '2020-01-02 16:20:25', 'Active');
 
 -- ----------------------------
 -- Table structure for law_properties_burden_of_property
@@ -2066,7 +2107,7 @@ CREATE TABLE `sys_users`  (
 -- ----------------------------
 -- Records of sys_users
 -- ----------------------------
-INSERT INTO `sys_users` VALUES (1, '1001', 'nirjhar', 'nirjhar@gmail.com', '$2y$10$Mdpv8wuH7XyOR7OsA.0fQ.Qo6X5zwiitDLxe4LycvegQYRT5IxdVS', '', 0, 'Nirjhar Mandal', NULL, '+8801855149196', '1993-01-04', '', 'Male', 'Married', '', '', '', '', '', '', '/img/users/1.jpg', 'Nikunjo, Uttra, Dhaka', NULL, '2019-01-07', '', 1, 'cT7pdcsvcFMDxA8bc0Pj1Csxl4J8ysCjoSvO8vydYtPs67j5gfjyxi1IGIaT', '2020-01-01 03:50:27', 0, NULL, '2019-05-05 11:15:53', '2020-01-01 15:51:13', 1, 'Active');
+INSERT INTO `sys_users` VALUES (1, '1001', 'nirjhar', 'nirjhar@gmail.com', '$2y$10$Mdpv8wuH7XyOR7OsA.0fQ.Qo6X5zwiitDLxe4LycvegQYRT5IxdVS', '', 0, 'Nirjhar Mandal', NULL, '+8801855149196', '1993-01-04', '', 'Male', 'Married', '', '', '', '', '', '', '/img/users/1.jpg', 'Nikunjo, Uttra, Dhaka', NULL, '2019-01-07', '', 1, 'cT7pdcsvcFMDxA8bc0Pj1Csxl4J8ysCjoSvO8vydYtPs67j5gfjyxi1IGIaT', '2020-01-01 03:50:27', 0, NULL, '2019-05-05 11:15:53', '2020-01-02 11:15:51', 1, 'Active');
 
 -- ----------------------------
 -- Table structure for test_jony

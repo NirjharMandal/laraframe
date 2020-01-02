@@ -1,14 +1,15 @@
-<form class="" id="basic_info" enctype="multipart/form-data" action="{{url('save-contract-info')}}" method="post">
+<form class="" id="basic_form" enctype="multipart/form-data" action="{{url('save-contract-info')}}" method="post">
     <div class="row pb-2">
         <div class="form-group col-md-4">
             <label class="form-label">Select Buyer</label>
             <?php
-            $buyer_param = array(
-                'selected_value' => '',
-                'attributes' => Array(
-                    'class' => 'multi'
-                )
-            );
+                $buyer_id = $contract_data->buyer_id ?? '';
+                $buyer_param = array(
+                    'selected_value' => $buyer_id,
+                    'attributes' => Array(
+                        'class' => 'multi'
+                    )
+                );
             ?>
             {{__combo('buyer-list', $buyer_param)}}
             <div class="help-block with-errors has-feedback"></div>
@@ -16,12 +17,14 @@
         <div class="form-group col-md-4">
             <label class="form-label">Select Seller</label>
             <?php
-            $seller_param = array(
-                'selected_value' => '',
-                'attributes' => Array(
-                    'class' => 'multi'
-                )
-            );
+                $seller_id = $contract_data->seller_id ?? '';
+                $seller_param = array(
+                    'selected_value' => $seller_id,
+                    'attributes' => Array(
+                        'class' => 'multi',
+                        'required' => 'required'
+                    )
+                );
             ?>
             {{__combo('seller-list', $seller_param)}}
             <div class="help-block with-errors has-feedback"></div>
@@ -31,11 +34,12 @@
         <div class="form-group col-md-8 contr_prop">
             <label class="form-label">Select Property</label>
             <?php
+
             $data_param = array(
                 'selected_value' => '',
                 'name' => 'law_properties_id[]',
                 'attributes' => Array(
-                    'class' => 'multi'
+                    'class' => 'multi re_multi'
                     )
                 );
             ?>
@@ -84,6 +88,126 @@
         </div>
     </div>
     <div class="contr_html"></div>
+    @if(isset($property_data) && !empty($property_data->toArray()))
+        <div class="col-md-12 row py-2 b-t">
+            <table class="table table-hover table-bordered" style="width: 100%">
+                <thead>
+                <tr>
+                    <th class="text-center">Property Info</th>
+                    <th class="text-center">Price</th>
+                    <th class="text-center"><i class="fa fa-files-o"></i> Water</th>
+                    <th class="text-center"><i class="fa fa-files-o"></i> Electricity</th>
+                    <th class="text-center"><i class="fa fa-files-o"></i> Gas</th>
+                    <th class="text-center"><i class="fa fa-files-o"></i> TV/Internet</th>
+                    <th class="text-center"></th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($property_data as $property)
+                    <tr id="record_{{$property->law_contract_property_id}}">
+                        <td class="py-2" style="">
+                            <b>{{$property->law_properties_name}}</b><br/>{{$property->property_description}}
+                        </td>
+                        <td class="py-2 text-right" style="width: 10%">{{$property->price}}</td>
+                        <td class="text-center py-2" style="width: 10%">
+                            @if(!empty($property->water_attachment_path))
+                                <div class="btn-group" role="group" aria-label="">
+                                    <a class="btn btn-xs btn-success"
+                                       href="{{asset('storage/attachment/'.$property->water_attachment_path)}}" download target="_blank">
+                                        <i class="fa fa-download"></i> View
+                                    </a>
+                                    <a class="btn btn-xs btn-danger text-white delete_file_only property_file"
+                                       data-style="zoom-in"
+                                       data-table="law_contract_property"
+                                       data-key="law_contract_property_id"
+                                       data-id="{{$property->law_contract_property_id}}"
+                                       data-pathcolumn="water_attachment_path"
+                                       data-path="{{$property->water_attachment_path}}">
+                                        <i class="fa fa-trash"></i> Remove
+                                    </a>
+                                </div>
+                            @else
+                                N/A
+                            @endif
+                        </td>
+                        <td class="text-center py-2" style="width: 10%">
+                            @if(!empty($property->electricity_attachment_path))
+                                <div class="btn-group" role="group" aria-label="">
+                                    <a class="btn btn-xs btn-success"
+                                       href="{{asset('storage/attachment/'.$property->electricity_attachment_path)}}" download target="_blank">
+                                        <i class="fa fa-download"></i> View
+                                    </a>
+                                    <a class="btn btn-xs btn-danger text-white delete_file_only property_file"
+                                       data-style="zoom-in"
+                                       data-table="law_contract_property"
+                                       data-key="law_contract_property_id"
+                                       data-id="{{$property->law_contract_property_id}}"
+                                       data-pathcolumn="electricity_attachment_path"
+                                       data-path="{{$property->electricity_attachment_path}}">
+                                        <i class="fa fa-trash"></i> Remove
+                                    </a>
+                                </div>
+                            @else
+                                N/A
+                            @endif
+                        </td>
+                        <td class="text-center py-2" style="width: 10%">
+                            @if(!empty($property->gas_attachment_path))
+                                <div class="btn-group" role="group" aria-label="">
+                                    <a class="btn btn-xs btn-success"
+                                       href="{{asset('storage/attachment/'.$property->gas_attachment_path)}}" download target="_blank">
+                                        <i class="fa fa-download"></i> View
+                                    </a>
+                                    <a class="btn btn-xs btn-danger text-white delete_file_only property_file"
+                                       data-style="zoom-in"
+                                       data-table="law_contract_property"
+                                       data-key="law_contract_property_id"
+                                       data-id="{{$property->law_contract_property_id}}"
+                                       data-pathcolumn="gas_attachment_path"
+                                       data-path="{{$property->gas_attachment_path}}">
+                                        <i class="fa fa-trash"></i> Remove
+                                    </a>
+                                </div>
+                            @else
+                                N/A
+                            @endif
+                        </td>
+                        <td class="text-center py-2" style="width: 12%">
+                            @if(!empty($property->tv_internet_attachment_path))
+                                <div class="btn-group" role="group" aria-label="">
+                                    <a class="btn btn-xs btn-success"
+                                       href="{{asset('storage/attachment/'.$property->tv_internet_attachment_path)}}" download target="_blank">
+                                        <i class="fa fa-download"></i> View
+                                    </a>
+                                    <a class="btn btn-xs btn-danger text-white delete_file_only property_file"
+                                       data-style="zoom-in"
+                                       data-table="law_contract_property"
+                                       data-key="law_contract_property_id"
+                                       data-id="{{$property->law_contract_property_id}}"
+                                       data-pathcolumn="tv_internet_attachment_path"
+                                       data-path="{{$property->tv_internet_attachment_path}}">
+                                        <i class="fa fa-trash"></i> Remove
+                                    </a>
+                                </div>
+                            @else
+                                N/A
+                            @endif
+                        </td>
+                        <td class="text-center" style="width: 1%">
+                            <a class="btn btn-xs btn-danger text-white delete_file_only row_rm"
+                               data-style="zoom-in"
+                               data-table="law_contract_property"
+                               data-key="law_contract_property_id"
+                               data-id="{{$property->law_contract_property_id}}">
+                                <i class="fa fa-minus-square"></i> Delete
+                            </a>
+                        </td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+        </div>
+    @endif
     <div class="row mt-2">
         <div class="col-md-3">
             <button class="btn btn-info submit_basic" data-style="zoom-in"><i class="fa fa-save"></i> Create Contract</button>
@@ -106,7 +230,7 @@
             if(x < 10){
                 x++;
                 $('.contr_html').append(contr_html);
-                $('.multi').multiselect({
+                $('.re_multi').multiselect({
                     enableHTML: true,
                     buttonWidth: '100%',
                     // enableFiltering: true,
@@ -126,31 +250,7 @@
         $('.contr_html').on('click', '.contr_remove', function(e){
             e.preventDefault();
             $(this).parent('div').parent('div').remove();
-            x--;
         });
     });
 
-/*    $('.remove_burden_file').on('click', function (e) {
-        e.preventDefault();
-        Ladda.bind(this);
-        var load = $(this).ladda();
-        var pk_value = $(this).data('id');
-        var path = $(this).data('path');
-        var url = "{{url('remove-file-record')}}";
-        swalConfirm('Are You sure to delete this file?').then(function (s) {
-            if(s.value){
-                var data = {
-                    table: 'law_properties_burden_of_property',
-                    key: 'law_properties_burden_of_property_id',
-                    value: pk_value,
-                    removerow: 1,
-                    pathvalue: path
-                };
-                makeAjaxPost(data, url, load).done(function(sresult){
-                    $('#record_'+pk_value).remove();
-                    swalSuccess('Deleted Successfully');
-                });
-            }
-        });
-    });*/
 </script>

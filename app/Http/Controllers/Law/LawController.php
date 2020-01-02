@@ -46,23 +46,27 @@ class LawController extends Controller {
      */
     public static function getContractInfo($contract_id){
         $data = [];
-        $data['$contract_data'] = [];
-        $data['legal_data'] = [];
-        $data['transfer_data'] = [];
+        $data['contract_data'] = [];
+        $data['property_data'] = [];
+        $data['payment_data'] = [];
         if($contract_id){
-            $data['user_data'] = DB::table('law_app_users')
-                ->select('law_app_users_id','law_app_users_name','user_type','marital_status','marriage_type','email','mobile','law_lawyers_id',
-                    'bank_account_number','tax_number','citizen_card_number','citizen_card_exp_date','passport_number','passport_issue_date','passport_exp_date',
-                    'passport_issue_entity','passport_attachment_path','commercial_certificate_attachment_path','letter_attorney_attachment_path','status')
-                ->where('law_app_users_id', $contract_id)
+            $data['contract_data'] = DB::table('law_contract')
+                ->select('law_contract_id','seller_id','buyer_id','reservation_agreement_date','reservation_agreement_attachment_path','deal_buying_value','deal_initial_payment',
+                    'deal_conc_limit_date','deal_notes','promise_contact_attachment_path','annexed_document_attachment_path','deed_date','law_notaries_id','deed_payment_method',
+                    'law_banks_id','bank_mutual_value','bank_stamp_tax','bank_agency','bank_responsible_name','bank_responsible_contact')
+                ->where('law_contract_id', $contract_id)
                 ->get()->first();
-            $data['legal_data'] = DB::table('law_app_users_legal_representative')
-                ->select('law_app_users_legal_representative_id','citizen_card_number','legal_representative_attachemnt_path')
-                ->where('law_app_users_id', $contract_id)
+            $data['property_data'] = DB::table('law_contract_property')
+                ->select('law_contract_property.law_contract_property_id','law_contract_property.law_properties_id','law_contract_property.law_contract_id','law_contract_property.price',
+                    'law_contract_property.water_attachment_path','law_contract_property.electricity_attachment_path','law_contract_property.gas_attachment_path','law_contract_property.tv_internet_attachment_path',
+                    'law_properties.law_property_type_id','law_properties.law_properties_name','law_properties.property_description'
+                )
+                ->join('law_properties', 'law_properties.law_properties_id', '=', 'law_contract_property.law_properties_id')
+                ->where('law_contract_property.law_contract_id', $contract_id)
                 ->get();
-            $data['transfer_data'] = DB::table('law_app_users_transfer')
-                ->select('law_app_users_transfer_id','transfers_info')
-                ->where('law_app_users_id', $contract_id)
+            $data['payment_data'] = DB::table('law_contract_initial_payment')
+                ->select('law_contract_id','law_contract_initial_payment_method')
+                ->where('law_contract_id', $contract_id)
                 ->get();
         }
         return $data;
@@ -132,11 +136,22 @@ class LawController extends Controller {
         $record = 0;
         $deleted = 0;
         if($request->removerow == 1){
+            if($request->table == 'law_contract_property'){
+                $del = [];
+                $row_data = DB::table($request->table)->where($request->key, $request->value)->first();
+                $del[] = $storage->delete($row_data->water_attachment_path);
+                $del[] = $storage->delete($row_data->electricity_attachment_path);
+                $del[] = $storage->delete($row_data->gas_attachment_path);
+                $del[] = $storage->delete($row_data->tv_internet_attachment_path);
+                $deleted = count($del) > 0 ? 1 : 0;
+            }
             $record = DB::table($request->table)->where($request->key, $request->value)->delete();
         }else{
             DB::table($request->table)->where($request->key, $request->value)->update([$request->pathcolumn => NULL]);
         }
-        $deleted = $storage->delete($request->pathvalue);
+        if(!empty($request->pathvalue)){
+            $deleted = $storage->delete($request->pathvalue);
+        }
         if($record == 1 && $deleted == 1) $success == 1;
         $respons_arr = [
             'success' => $success,
@@ -148,3 +163,4 @@ class LawController extends Controller {
 
 }
 
+Nijhu!@#456

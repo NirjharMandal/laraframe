@@ -255,6 +255,12 @@ button.multiselect.dropdown-toggle.btn.btn-default {
 .dropdown-menu label.radio{
     padding-left:10px;
 }
+.dropdown-menu > li > a {
+    margin: 0;
+}
+.dropdown-menu > .active > a, .dropdown-menu > .active > a:focus, .dropdown-menu > .active > a:hover {
+    border-radius: 0;
+}
 /*==============Backgrounds============*/
 .bg-blue, .bg-primary{
     background-color: #007bff;

@@ -43,17 +43,19 @@
                 <div class="help-block with-errors has-feedback"></div>
             </div>
             @if(isset($property_data->land_reg_certificate_attachment_path) && !empty($property_data))
-                <div class="form-group col-md-3 pt-4 generalfilebox">
-                    <a class="btn btn-xs btn-success"
-                       href="{{asset('storage/attachment/'.$property_data->land_reg_certificate_attachment_path)}}" download target="_blank">
-                        <i class="fa fa-download"></i> Download / View
-                    </a>
-                    <a class="btn btn-xs btn-danger delete_file_only" data-style="zoom-in"
-                       data-id="{{$property_data->law_properties_id ?? ''}}"
-                       data-pathcolumn="land_reg_certificate_attachment_path"
-                       data-path="{{$property_data->land_reg_certificate_attachment_path ?? ''}}">
-                        <i class="fa fa-trash"></i> Delete File
-                    </a>
+                <div class="form-group col-md-3 pt-4 ">
+                    <div class="btn-group generalfilebox" role="group" aria-label="">
+                        <a class="btn btn-xs btn-success"
+                           href="{{asset('storage/attachment/'.$property_data->land_reg_certificate_attachment_path)}}" download target="_blank">
+                            <i class="fa fa-download"></i> Download / View
+                        </a>
+                        <a class="btn btn-xs btn-danger delete_file_only text-white" data-style="zoom-in"
+                           data-id="{{$property_data->law_properties_id ?? ''}}"
+                           data-pathcolumn="land_reg_certificate_attachment_path"
+                           data-path="{{$property_data->land_reg_certificate_attachment_path ?? ''}}">
+                            <i class="fa fa-trash"></i> Delete File
+                        </a>
+                    </div>
                 </div>
             @endif
         </div>
